@@ -1,8 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Selenium Test Suite">
+<suite name="Selenium Test Suite" verbose="1">
     <test name="Login Test">
         <classes>
             <class name="org.example.LoginTest"/>
         </classes>
     </test>
+    <listeners>
+        <listener class-name="org.testng.reporters.XMLReporter"/>
+    </listeners>
 </suite>
+
+
