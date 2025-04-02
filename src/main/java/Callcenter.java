@@ -1,63 +1,70 @@
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-import java.time.Duration;
-
-import static org.checkerframework.checker.units.qual.Prefix.milli;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
 public class Callcenter {
-    public static void main(String[] args) {
-        // Cài dặt ChromeDriver
+    WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        try {
-            driver.get("https://ci-rsa-ecom.frt.vn/");
-            // Tìm ô nhập tài khoản và mật khẩU
-            Thread.sleep(2000);
-            WebElement UserNameBox = driver.findElement(By.name("LoginInput.UserNameOrEmailAddress"));
-            UserNameBox.sendKeys("tinvt4");
-            //Thread.sleep(3000);
-            // tÌM ô Nhập Password
-            WebElement PasswordBox = driver.findElement(By.name("LoginInput.Password"));
-            PasswordBox.sendKeys("<AQWERT>");
-           // Thread.sleep(3000);
-            // Click nút Đăng nhập
-            WebElement loginButton = driver.findElement(By.id("kt_login_signin_submit"));
-            loginButton.click();
-            // Đợi 5 giây để xem kết quả
-            Thread.sleep(3000);
-            WebElement menu = driver.findElement(By.xpath("//div[@class='ant-menu-submenu-title']"));
-            menu.click(); // Mở menu trước
-
-            Thread.sleep(1000); // Đợi menu mở
-            // Chọn mục call center
-            //WebElement callCenter = driver.findElement(By.xpath("//span[contains(text(), 'Call center')]"));
-            //callCenter.click();
-            // Chọn mục call center
-            WebElement historyCall = driver.findElement(By.xpath("//span[contains(text(), 'Lịch sử cuộc gọi')]"));
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", historyCall);
-
-
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } //
-         finally {
-            //đóng trình duyệt
-           // driver.quit();
-        }
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
-    public void runTest() {
+    @Test
+    public void testCallCenter() throws InterruptedException {
+        driver.get("https://ci-rsa-ecom.frt.vn/");
+
+        // Nhập tài khoản
+        Thread.sleep(2000);
+        WebElement userNameBox = driver.findElement(By.name("LoginInput.UserNameOrEmailAddress"));
+        userNameBox.sendKeys("tinvt4");
+
+        // Nhập mật khẩu
+        WebElement passwordBox = driver.findElement(By.name("LoginInput.Password"));
+        passwordBox.sendKeys("<AQWERT>");
+
+        // Click nút đăng nhập
+        WebElement loginButton = driver.findElement(By.id("kt_login_signin_submit"));
+        loginButton.click();
+
+        // Đợi sau khi đăng nhập thành công
+        Thread.sleep(3000);
+
+        // Click vào menu
+        WebElement menu = driver.findElement(By.xpath("//div[@class='ant-menu-submenu-title']"));
+        menu.click();
+
+        Thread.sleep(1000); // Chờ menu mở ra
+
+        // Click vào "Lịch sử cuộc gọi"
+        WebElement historyCall = driver.findElement(By.xpath("//span[contains(text(), 'Lịch sử cuộc gọi')]"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", historyCall);
+
+        Thread.sleep(3000); // Đợi để kiểm tra kết quả
+        // 🛠 Kiểm tra nếu đã vào được trang "Lịch sử cuộc gọi"
+        WebElement pageTitle = driver.findElement(By.xpath("//h1[contains(text(), 'Lịch sử cuộc gọi')]"));
+        Assert.assertTrue(pageTitle.isDisplayed(), "Không tìm thấy tiêu đề trang Lịch sử cuộc gọi");
+        System.out.println("✅ Đã vào trang Lịch sử cuộc gọi thành công!");
+    }
+
+    @AfterMethod
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+    }
+
 
     }
 }
+
+

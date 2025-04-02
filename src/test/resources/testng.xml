@@ -2,8 +2,9 @@
 <suite name="Selenium Test Suite">
     <test name="Selenium Tests">
         <classes>
-            <class name="FacebookLoginTest" />
+            <class name="Callcenter" />
         </classes>
     </test>
 </suite>
+
 
