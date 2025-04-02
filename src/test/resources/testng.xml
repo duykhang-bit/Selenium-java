@@ -3,6 +3,7 @@
     <test name="Selenium Tests">
         <classes>
             <class name="Callcenter" />
+            <class name="TestSelenium" />
         </classes>
     </test>
 </suite>
