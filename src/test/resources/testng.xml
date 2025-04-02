@@ -2,7 +2,8 @@
 <suite name="Selenium Test Suite">
     <test name="Selenium Tests">
         <classes>
-            <class name="TestSelenium" />
+            <class name="FacebookLoginTest" />
         </classes>
     </test>
 </suite>
+
