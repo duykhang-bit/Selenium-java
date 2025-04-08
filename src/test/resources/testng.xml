@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Selenium Test Suite">
-    <test name="Selenium Tests">
+<suite name="Test Suite" verbose="1">
+    <listeners>
+        <!-- Tạo báo cáo XML -->
+        <listener class-name="org.testng.reporters.XMLReporter" />
+        <!-- Tạo báo cáo HTML -->
+        <listener class-name="org.testng.reporters.EmailableReporter2" />
+    </listeners>
+    <test name="Test">
         <classes>
-            <class name="TestSelenium" />
+            <class name="Callcenter" />
+>>>>>>> 8599871 (Initial commit)
         </classes>
     </test>
 </suite>
