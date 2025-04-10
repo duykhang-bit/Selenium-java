@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-10T11:36:49 GMT+07:00" name="Test Suite" finished-at="2025-04-10T11:37:02 GMT+07:00" duration-ms="13176">
+  <suite started-at="2025-04-10T15:01:37 GMT+07:00" name="Test Suite" finished-at="2025-04-10T15:02:39 GMT+07:00" duration-ms="61399">
     <groups>
     </groups>
-    <test started-at="2025-04-10T11:36:49 GMT+07:00" name="Test" finished-at="2025-04-10T11:37:02 GMT+07:00" duration-ms="13176">
+    <test started-at="2025-04-10T15:01:37 GMT+07:00" name="Test" finished-at="2025-04-10T15:02:39 GMT+07:00" duration-ms="61399">
       <class name="Callcenter">
-        <test-method is-config="true" signature="setup()[pri:0, instance:Callcenter@363ee3a2]" started-at="2025-04-10T11:36:49 GMT+07:00" name="setup" finished-at="2025-04-10T11:36:53 GMT+07:00" duration-ms="4594" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:Callcenter@7f552bd3]" started-at="2025-04-10T15:01:38 GMT+07:00" name="setup" finished-at="2025-04-10T15:02:04 GMT+07:00" duration-ms="26376" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testCallCenter()[pri:0, instance:Callcenter@363ee3a2]" started-at="2025-04-10T11:36:53 GMT+07:00" name="testCallCenter" finished-at="2025-04-10T11:37:02 GMT+07:00" duration-ms="8539" status="PASS">
+        <test-method signature="testCallCenter()[pri:0, instance:Callcenter@7f552bd3]" started-at="2025-04-10T15:02:04 GMT+07:00" name="testCallCenter" finished-at="2025-04-10T15:02:39 GMT+07:00" duration-ms="34816" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCallCenter -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:Callcenter@363ee3a2]" started-at="2025-04-10T11:37:02 GMT+07:00" name="teardown" finished-at="2025-04-10T11:37:02 GMT+07:00" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Callcenter@7f552bd3]" started-at="2025-04-10T15:02:39 GMT+07:00" name="teardown" finished-at="2025-04-10T15:02:39 GMT+07:00" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
