@@ -3,7 +3,7 @@
     <listeners>
         <!-- Tạo báo cáo XML -->
         <listener class-name="org.testng.reporters.XMLReporter" />
-        <!-- Tạo báo cáo HTML1 -->
+        <!-- Tạo báo cáo HTML -->
 
         <listener class-name="org.testng.reporters.EmailableReporter2" />
     </listeners>
