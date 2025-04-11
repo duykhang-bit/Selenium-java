@@ -98,7 +98,7 @@ public class LoginCallcenter {
     @AfterMethod
     public void teardown() {
         if (driver != null) {
-             //driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
+             driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
         }
     }
 }
