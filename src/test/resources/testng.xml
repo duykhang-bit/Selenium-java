@@ -4,8 +4,11 @@
         <!-- Tạo báo cáo XML -->
         <listener class-name="org.testng.reporters.XMLReporter" />
         <!-- Tạo báo cáo HTML -->
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 36c392e43b5e910249380f71f5a74232b6d821f6
         <listener class-name="org.testng.reporters.EmailableReporter2" />
     </listeners>
     <test name="Test">
@@ -13,10 +16,13 @@
             <class name="Callcenter" />
         </classes>
     </test>
+<<<<<<< HEAD
     <test name="Test1">
         <classes>
             <class name="LoginCallcenter" />
         </classes>
     </test>
 
+=======
+>>>>>>> 36c392e43b5e910249380f71f5a74232b6d821f6
 </suite>

@@ -28,6 +28,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.10.2</version>
+<<<<<<< HEAD
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -35,6 +36,16 @@
     <build>
         <plugins>
             <!-- Plugin chạy TestNG -->
+=======
+        </dependency>
+    </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <!-- Maven Surefire Plugin để chạy TestNG -->
+>>>>>>> 36c392e43b5e910249380f71f5a74232b6d821f6
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -46,12 +57,17 @@
                 </configuration>
             </plugin>
 
+<<<<<<< HEAD
             <!-- Báo cáo HTML -->
+=======
+            <!--report -->
+>>>>>>> 36c392e43b5e910249380f71f5a74232b6d821f6
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
+<<<<<<< HEAD
 
             <!-- Plugin TestNG (tùy chọn nếu bạn muốn gọi thẳng TestNG class) -->
             <plugin>
@@ -61,4 +77,21 @@
             </plugin>
         </plugins>
     </build>
+=======
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <reportFormat>brief</reportFormat> <!-- Định dạng báo cáo -->
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <forkCount>1C</forkCount>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
+    </build>
+
+>>>>>>> 36c392e43b5e910249380f71f5a74232b6d821f6
 </project>
