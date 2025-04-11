@@ -68,6 +68,12 @@ public class LoginCallcenter {
         WebElement sdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@placeholder='Nhập số điện thoại']")));
         sdtBox.sendKeys("0835089254");
+
+        //Click button call
+        WebElement call = wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
+        call.click();
+
     }
 
     @AfterMethod
