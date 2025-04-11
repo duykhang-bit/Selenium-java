@@ -47,6 +47,9 @@ public class Callcenter {
         // Click vào menu
         WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ant-menu-submenu-title']")));
         menu.click();
+
+
+        //Nhạp tài khoản
         Actions actions = new Actions(driver);
         driver.get("https://ci-rsa-ecom.frt.vn/call-center/call-history");
          //Xác minh text "Danh sách cuộc gọi" có hiển thị tại màn hình danh sách cuộc gọi
