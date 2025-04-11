@@ -35,7 +35,7 @@ public class LoginCallcenter {
     }
 
     @Test
-    public void LoginCallcenter() {
+    public void LoginCallcenter() throws InterruptedException {
         driver.get("https://ci-rsa-ecom.frt.vn/");
 
         // Nhập tài khoản
@@ -70,16 +70,35 @@ public class LoginCallcenter {
         sdtBox.sendKeys("0835089254");
 
         //Click button call
-        WebElement call = wait.until(ExpectedConditions.elementToBeClickable
+        WebElement call1 = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
-        call.click();
+        call1.click();
+        //Thread.sleep(1000);
+        //Click button end call
+//        WebElement endcall = wait.until(ExpectedConditions.elementToBeClickable
+//                (By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
+//        endcall.click();
+
+        //Chuyển cuộc gọi
+
+        WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER']")));
+        TransferAgentB.click();
+        // input transfer 30009
+        WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//input[@id='TRANSFERTO'")));
+        nhapsdtBox.sendKeys("30009");
+
+
+
+
 
     }
 
     @AfterMethod
     public void teardown() {
         if (driver != null) {
-            // driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
+             //driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
         }
     }
 }

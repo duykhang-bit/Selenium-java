@@ -11,7 +11,12 @@
     <test name="Test">
         <classes>
             <class name="Callcenter" />
->>>>>>> 8599871 (Initial commit)
         </classes>
     </test>
+    <test name="Test1">
+        <classes>
+            <class name="LoginCallcenter" />
+        </classes>
+    </test>
+
 </suite>
