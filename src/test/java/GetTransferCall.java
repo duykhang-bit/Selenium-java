@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginCallcenter {
+public class GetTransferCall {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -35,13 +35,13 @@ public class LoginCallcenter {
     }
 
     @Test
-    public void LoginCallcenter() throws InterruptedException {
+    public void GetTransferCall() throws InterruptedException {
         driver.get("https://ci-rsa-ecom.frt.vn/");
 
         // Nhập tài khoản
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
-        userNameBox.sendKeys("tinvt4");
+        userNameBox.sendKeys("Thuct5");
 
         // Nhập mật khẩu
         WebElement passwordBox = driver.findElement(By.name("LoginInput.Password"));
@@ -63,63 +63,35 @@ public class LoginCallcenter {
         WebElement loginBtn2 = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='A-SIGNIN-BTN']")));
         loginBtn2.click();
+        //button READY
+        WebElement readybtn =wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='ISREADY']")));
+        readybtn.click();
 
-        // Nhập số điện thoại
-        WebElement sdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//input[@placeholder='Nhập số điện thoại']")));
-        sdtBox.sendKeys("0835089254");
-
-        //Click button call
-        WebElement call1 = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
-        call1.click();
-        //Thread.sleep(1000);
+        //button ANSWER
+        WebElement answerbtn =wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='CALL-ACTION-BTN-ANSWER']")));
+        answerbtn.click();
+        Thread.sleep(10000);
         //Click button end call
-//        WebElement endcall = wait.until(ExpectedConditions.elementToBeClickable
-//                (By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
-//        endcall.click();
-        // HOLD ON CALL
-        WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
-        HoldOncall.click();
-        // giữu máy 5 s
-        Thread.sleep(6000);
-        //Tiếp tục cuộc gọi
-        WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
-        Continuecall.click();
-        //Chuyển cuộc gọi
-
-        WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable
-                (By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER']")));
-        TransferAgentB.click();
+        WebElement endcall = wait.until(ExpectedConditions.elementToBeClickable
+                (By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
+        endcall.click();
 
 
-        // input transfer 30009
-        WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//input[@id='TRANSFERTO']")));
-        nhapsdtBox.sendKeys("30009");
-        //Tham vấn
-        WebElement thamvan = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//button[@id='transferBtn']")));
-        thamvan.click();
-        //Chuyển cuộc gọi cho Agent B
-        WebElement transferB = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//dic[@class='ant-btn ant-btn-primary ant-btn-lg sc-aXZVg knHWgd my-4']")));
-        transferB.click();
-
-
-        //Thread.sleep(30000);
 
 
 
 
     }
 
-    @AfterMethod
-    public void teardown() {
-        if (driver != null) {
-             //driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
+
+        @AfterMethod
+        public void teardown () {
+            if (driver != null) {
+               // driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
+            }
+
         }
     }
-}
+
