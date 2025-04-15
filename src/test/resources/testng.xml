@@ -8,16 +8,18 @@
 
         <listener class-name="org.testng.reporters.EmailableReporter2" />
     </listeners>
-    <test name="Test">
-        <classes>
-            <class name="LoginCallcenter" />
-        </classes>
-    </test>
 
-    <test name="Test1">
-        <classes>
-            <class name="GetTransferCall" />
-        </classes>
-    </test>
+
+        <test name="RunCallFlow">
+            <classes>
+                <class name="LoginCallcenter"/>
+            </classes>
+        </test>
+
+
+
+
+
 
 </suite>
+

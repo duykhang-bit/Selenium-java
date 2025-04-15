@@ -35,7 +35,7 @@ public class GetTransferCall {
     }
 
     @Test
-    public void GetTransferCall() throws InterruptedException {
+    public void runAnswerFlow () throws InterruptedException {
         driver.get("https://ci-rsa-ecom.frt.vn/");
 
         // Nhập tài khoản
@@ -73,14 +73,11 @@ public class GetTransferCall {
                 By.xpath("//button[@id='CALL-ACTION-BTN-ANSWER']")));
         answerbtn.click();
         Thread.sleep(10000);
+
         //Click button end call
         WebElement endcall = wait.until(ExpectedConditions.elementToBeClickable
                 (By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
         endcall.click();
-
-
-
-
 
 
     }

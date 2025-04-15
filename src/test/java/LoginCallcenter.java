@@ -99,17 +99,27 @@ public class LoginCallcenter {
         WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@id='TRANSFERTO']")));
         nhapsdtBox.sendKeys("30009");
-        //Tham vấn
+        // Tham vấn
         WebElement thamvan = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//button[@id='transferBtn']")));
         thamvan.click();
-        //Chuyển cuộc gọi cho Agent B
+
+// Gọi agent B thực hiện answer
+        System.out.println("Đang gọi Agent B nhận cuộc gọi...");
+
+        GetTransferCall agentB = new GetTransferCall();
+        agentB.runAnswerFlow(); // Gọi flow Agent B
+        Thread.sleep(30000);
+
+// Tiếp tục sau khi Agent B answer
+        System.out.println("Tiếp tục chuyển cuộc gọi cho Agent B...");
+
+// Chuyển cuộc gọi cho Agent B
         WebElement transferB = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//dic[@class='ant-btn ant-btn-primary ant-btn-lg sc-aXZVg knHWgd my-4']")));
         transferB.click();
 
-
-        //Thread.sleep(30000);
+        //Thread.sleep(30000);\
 
 
 
