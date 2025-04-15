@@ -46,9 +46,10 @@
         <!-- Selenium DevTools (generic, tránh version cụ thể như -v135) -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools</artifactId>
+            <artifactId>selenium-devtools-v114</artifactId>
             <version>4.10.0</version>
         </dependency>
+
     </dependencies>
 
     <build>
