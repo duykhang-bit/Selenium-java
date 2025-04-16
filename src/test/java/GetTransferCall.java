@@ -83,12 +83,11 @@ public class GetTransferCall {
     }
 
 
-        @AfterMethod
-        public void teardown () {
-            if (driver != null) {
-               // driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
-            }
-
+    @AfterMethod
+    public void teardown () {
+        if (driver != null) {
+            // driver.quit(); // Bỏ comment nếu bạn muốn đóng browser sau khi chạy test
         }
-    }
 
+    }
+}
