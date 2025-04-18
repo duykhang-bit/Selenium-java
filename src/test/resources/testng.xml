@@ -8,7 +8,7 @@
     </listeners>
         <test name="RunCallFlow">
             <classes>
-                <class name="LoginCallcenter"/>
+                <class name="RsaEcomLc"/>
             </classes>
         </test>
 

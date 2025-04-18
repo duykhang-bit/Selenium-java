@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetTransferCall {
+public class RsaEcomAgentB {
     WebDriver driver;
     WebDriverWait wait;
 

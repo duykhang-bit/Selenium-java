@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginCallcenter {
+public class RsaEcomLc {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -78,10 +78,30 @@ public class LoginCallcenter {
         thamvan.click();
 
         System.out.println("Đang gọi Agent B nhận cuộc gọi...");
+
+
+        // GỌI QUA CallCenterVac:
+// Tạo object từ class CallCenterVac, class này chứa luồng xử lý Agent B nhận cuộc gọi ở hệ thống khác (VD: CSKH Vaccine)
+// Gọi hàm runFlow() để chạy quy trình Agent B login + trả lời cuộc gọi
+// Sau đó gọi teardown() để đóng trình duyệt sau khi hoàn tất
+        CallCenterVac VAC = new CallCenterVac();
+        VAC.runFlow();   // Agent B answer
+        VAC.teardown();
+
+
+        // GỌI QUA CSKH
+        CallCenterCSKH CSKH = new CallCenterCSKH();
+        CSKH.runFlow();   // Agent B answer
+        CSKH.teardown();
+
+
         // gọi qua class GetTransferCall để mở tab mới trả lời cuộc gọi AgenT b
-        GetTransferCall agentB = new GetTransferCall();
+        RsaEcomAgentB agentB = new RsaEcomAgentB();
         agentB.runFlow();   // Agent B answer
         agentB.teardown();
+
+
+
 
         System.out.println("Tiếp tục chuyển cuộc gọi cho Agent B...");
        // Chuyển cuộc gọi cho Agent B hẳn
@@ -89,9 +109,10 @@ public class LoginCallcenter {
                 By.xpath("//button[@id='transferBtn']")));
         transferB.click();
         //End CALL  AgentB
-        WebElement endcallAgentB = wait.until((ExpectedConditions.elementToBeClickable(
+        WebElement endcallAgentB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
         endcallAgentB.click();
+
 
 
     }
@@ -103,7 +124,7 @@ public class LoginCallcenter {
     }
 
     public static void main(String[] args) {
-        LoginCallcenter app = new LoginCallcenter();
+        RsaEcomLc app = new RsaEcomLc();
         try {
             app.runFlow();
         } catch (InterruptedException e) {
