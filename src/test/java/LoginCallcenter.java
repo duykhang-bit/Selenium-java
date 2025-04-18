@@ -25,69 +25,75 @@ public class LoginCallcenter {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-
+        //truy cập web RSA ECOM lc
         driver.get("https://ci-rsa-ecom.frt.vn/");
-
+        // nhập user name
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
         userNameBox.sendKeys("tinvt4");
-
+        // nhập  passwword
         WebElement passwordBox = driver.findElement(By.name("LoginInput.Password"));
         passwordBox.sendKeys("********");
-
+        // Submit đăng nhập
         WebElement loginBtn1 = driver.findElement(By.id("kt_login_signin_submit"));
         loginBtn1.click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("kt_login_signin_submit")));
-
+        //Chọn menu
         WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='ant-menu-submenu-title']")));
         menu.click();
-
+        // DĂNG NHẬP HỆ THÔNG
         WebElement loginBtn2 = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='A-SIGNIN-BTN']")));
         loginBtn2.click();
-
+        // Nhập sdt vô để call out
         WebElement sdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@placeholder='Nhập số điện thoại']")));
         sdtBox.sendKeys("0835089254");
-
+        // nhân button call
         WebElement call1 = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
         call1.click();
-
+        // nhấn button hold
         WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
         HoldOncall.click();
 
         Thread.sleep(6000); // giữ máy
-
+        // Chọn button tiếp tục
         WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
         Continuecall.click();
-
+        // Chọn button transfer
         WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER']")));
         TransferAgentB.click();
-
+        // nhập mã dể transfer tới RSA ECOM 30009
         WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@id='TRANSFERTO']")));
         nhapsdtBox.sendKeys("30009");
-
+        // chọn button tham vấn
         WebElement thamvan = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//button[@id='transferBtn']")));
         thamvan.click();
 
         System.out.println("Đang gọi Agent B nhận cuộc gọi...");
-
+        // gọi qua class GetTransferCall để mở tab mới trả lời cuộc gọi AgenT b
         GetTransferCall agentB = new GetTransferCall();
         agentB.runFlow();   // Agent B answer
         agentB.teardown();
 
         System.out.println("Tiếp tục chuyển cuộc gọi cho Agent B...");
-
+       // Chuyển cuộc gọi cho Agent B hẳn
         WebElement transferB = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER-CONFIRM']")));
+                By.xpath("//button[@id='transferBtn']")));
         transferB.click();
+        //End CALL  AgentB
+        WebElement endcallAgentB = wait.until((ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
+        endcallAgentB.click();
+
+
     }
 
     public void teardown() {
