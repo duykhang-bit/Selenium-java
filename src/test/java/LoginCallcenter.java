@@ -107,3 +107,27 @@ public class LoginCallcenter {
         }
     }
 }
+//int mark = 85;
+//
+//if (mark >= 90) {
+//        System.out.println("Xuất sắc");
+//} else if (mark >= 75) {
+//        System.out.println("Giỏi");
+//} else if (mark >= 50) {
+//        System.out.println("Trung bình");
+//} else {
+//        System.out.println("Yếu");
+//}
+////
+//int mark = 85;
+//if (mark >-90){
+//    System.out.println("Suất sắc");
+//        }
+//else if (mark >= 75){
+//    System.out.println("giỏi");
+//
+//        }
+//else{
+//    System.out.println("Yếu");
+//                }
+

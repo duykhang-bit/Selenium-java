@@ -54,12 +54,17 @@ public class TestNhapKhacXuatKhac {
         menuNhapXuatKhac.click();
 
         // 👉 Click nút Import
-        WebElement importBtn = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[contains(., 'Import') and not(@disabled)]")));
+        WebElement importButton = driver.findElement(By.xpath("//button[span[text()='Import']]"));
+        importButton.click();
+
+//        WebElement importBtn = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//button[contains(., 'Import') and not(@disabled)]")));
+
+
 
         // 👉 Scroll tới nút Import nếu bị khuất
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", importBtn);
-        importBtn.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", importButton);
+        importButton.click();
 
         // 👉 Lấy đường dẫn tuyệt đối tới file Excel
         File file = new File("src/test/resources/import-template.xlsx");
