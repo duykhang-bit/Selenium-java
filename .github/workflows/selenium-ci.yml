@@ -13,37 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean test -DsuiteXmlFile=src/test/resources/testng.xml
-
-      - name: Send email with test result
-        if: always() # luôn gửi dù pass hay fail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: Selenium Test Report
-          to: leduykhang185@gmail.com
-          from: GitHub CI <${{ secrets.EMAIL_USERNAME }}>
-          body: |
-            Xin chào Khang,
-            
-            Đây là kết quả test automation từ GitHub Actions.
-            
-            Trạng thái: ${{ job.status }}
-            
-            Cảm ơn bạn đã sử dụng CI/CD!
-            
-            Trân trọng,
-            Bot GitHub
+    - name: Build with Maven
+      run: mvn clean test -DsuiteXmlFile=src/test/resources/testng.xml
