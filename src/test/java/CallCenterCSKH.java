@@ -4,6 +4,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.AfterMethod;
+
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -13,7 +17,10 @@ public class CallCenterCSKH {
     WebDriver driver;
     WebDriverWait wait;
 
-    public void runFlow() throws InterruptedException {
+    @BeforeMethod
+    @Test
+
+    public void runFlowCSKH() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
@@ -37,37 +44,61 @@ public class CallCenterCSKH {
 
         WebElement loginBtn1 = driver.findElement(By.xpath("//button[@type='submit']"));
         loginBtn1.click();
+        // Chọn CSKH
+        WebElement outboundCSKH = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//a[contains(text(),'Outbound CSKH')]")));
+
+        outboundCSKH.click();
+        // DĂNG NHẬP HỆ THÔNG
+        WebElement loginBtn3 = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='log-in-mpt' and contains(@class,'logaccount-mpt')]")));
+        loginBtn3.click();
 
 
-        WebElement readybtn = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='ISREADY']")));
-        readybtn.click();
+        // nhập sdt để call out
+        WebElement inputsdtbox = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//input[@placeholder='Số điện thoại']")));
+        inputsdtbox.sendKeys("0835089254");
+        //call
+        WebElement call = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
+        call.click();
 
-        Thread.sleep(3000);
 
-        WebElement answerbtn = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='CALL-ACTION-BTN-ANSWER']")));
-        answerbtn.click();
-
-        System.out.println("Agent B đã answer cuộc gọi.");
-        Thread.sleep(10000);
+//
+//
+//        WebElement readybtn = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//button[@id='ISREADY']")));
+//        readybtn.click();
+//
+//        Thread.sleep(3000);
+//
+//        WebElement answerbtn = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//button[@id='CALL-ACTION-BTN-ANSWER']")));
+//        answerbtn.click();
+//
+//        System.out.println("Agent B đã answer cuộc gọi.");
+//        Thread.sleep(10000);
     }
+
+    @AfterMethod
 
     public void teardown() {
         if (driver != null) {
             driver.quit();
         }
     }
+}
 
     // Chạy riêng nếu muốn test class này độc lập
-    public static void main(String[] args) {
-        CallCenterCSKH app = new CallCenterCSKH();
-        try {
-            app.runFlow();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            app.teardown();
-        }
-    }
-}
+//    public static void main(String[] args) {
+//        CallCenterCSKH app = new CallCenterCSKH();
+//        try {
+//            app.runFlow();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            app.teardown();
+//        }
+//    }
+//}

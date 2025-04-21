@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Test Suite" verbose="1">
-    <listeners>
-        <!-- Tạo báo cáo XML -->
-        <listener class-name="org.testng.reporters.XMLReporter" />
-        <!-- Tạo báo cáo HTML -->
-        <listener class-name="org.testng.reporters.EmailableReporter2" />
-    </listeners>
-        <test name="RunCallFlow">
+    <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+    <suite thread-count="3" parallel="classes" name="RunSuite">
+        <test name="RunTest">
             <classes>
+
                 <class name="RsaEcomLc"/>
+                <class name="CallCenterCSKH"/>
+                <class name="CallCenterVac" />
+
             </classes>
         </test>
+    </suite>
 
 
 
 
+        <!--
+        <suite name="Test Suite" verbose="1">
+          <listeners>
+              <listener class-name="org.testng.reporters.XMLReporter" />
+              <listener class-name="org.testng.reporters.EmailableReporter2" />
+          </listeners>
 
+          <test name="RunCallFlow">
+            <classes>
+              <class name="RsaEcomLc"/>
+            </classes>
+          </test>
+        </suite>
+        -->
 
-</suite>
 

@@ -22,7 +22,7 @@ public class CallCenterVac {
     @BeforeMethod
     @Test
 
-    public void runFlow() throws InterruptedException {
+    public void runFlowVAC() throws InterruptedException {
         WebDriverManager.chromedriver().setup(); // Tự động cài đặt/chạy ChromeDriver phù hợp
 
         ChromeOptions options = new ChromeOptions(); // Cấu hình trình duyệt

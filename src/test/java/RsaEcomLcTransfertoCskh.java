@@ -1,11 +1,12 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -15,7 +16,10 @@ public class RsaEcomLcTransfertoCskh {
     WebDriver driver;
     WebDriverWait wait;
 
-    public void runFlow() throws InterruptedException {
+    @BeforeMethod
+    @Test
+
+    public void runFlowLC() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
@@ -80,13 +84,31 @@ public class RsaEcomLcTransfertoCskh {
         thamvan.click();
 
         System.out.println("Đang gọi Agent B nhận cuộc gọi...");
+
+
+        // GỌI QUA CallCenterVac:
+// Tạo object từ class CallCenterVac, class này chứa luồng xử lý Agent B nhận cuộc gọi ở hệ thống khác (VD: CSKH Vaccine)
+// Gọi hàm runFlow() để chạy quy trình Agent B login + trả lời cuộc gọi
+// Sau đó gọi teardown() để đóng trình duyệt sau khi hoàn tất
+//        CallCenterVac VAC = new CallCenterVac();
+//        VAC.runFlowVAC();   // Agent B answer
+//        VAC.teardown();
+//
+
+        // GỌI QUA CSKH
+        CallCenterCSKH CSKH = new CallCenterCSKH();
+        CSKH.runFlowCSKH();   // Agent B answer
+        CSKH.teardown();
+
+
         // gọi qua class GetTransferCall để mở tab mới trả lời cuộc gọi AgenT b
-        RsaEcomAgentB agentB = new RsaEcomAgentB();
-        agentB.runFlow();   // Agent B answer
-        agentB.teardown();
+//        RsaEcomAgentB agentB = new RsaEcomAgentB();
+//        agentB.runFlow();   // Agent B answer
+//        agentB.teardown();
+
 
         System.out.println("Tiếp tục chuyển cuộc gọi cho Agent B...");
-       // Chuyển cuộc gọi cho Agent B hẳn
+        // Chuyển cuộc gọi cho Agent B hẳn
         WebElement transferB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
         transferB.click();
@@ -96,26 +118,28 @@ public class RsaEcomLcTransfertoCskh {
         endcallAgentB.click();
 
 
-
     }
+
+    @AfterMethod
 
     public void teardown() {
         if (driver != null) {
             driver.quit();
         }
     }
-
-    public static void main(String[] args) {
-        RsaEcomLcTransfertoCskh app = new RsaEcomLcTransfertoCskh();
-        try {
-            app.runFlow();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            app.teardown();
-        }
-    }
 }
+
+//    public static void main(String[] args) {
+//        RsaEcomLc app = new RsaEcomLc();
+//        try {
+//            app.runFlow();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } finally {
+//            app.teardown();
+//        }
+//    }
+
 //int mark = 85;
 //
 //if (mark >= 90) {
