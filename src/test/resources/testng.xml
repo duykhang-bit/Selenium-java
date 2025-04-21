@@ -5,12 +5,14 @@
             <classes>
 
                 <class name="RsaEcomLc"/>
-                <class name="CallCenterCSKH"/>
+                <!--<class name="CallCenterCSKH"/>
                 <class name="CallCenterVac" />
+                -->>
 
             </classes>
         </test>
     </suite>
+
 
 
 

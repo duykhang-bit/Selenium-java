@@ -76,7 +76,7 @@ public class RsaEcomAgentB {
     // Hàm đóng trình duyệt sau khi test (tùy chọn)
     public void teardown() {
         if (driver != null) {
-            // driver.quit(); // <-- Bỏ comment nếu muốn đóng trình duyệt
+            driver.quit(); // <-- Bỏ comment nếu muốn đóng trình duyệt
         }
     }
 }
