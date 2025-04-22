@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;   // Điều khiển trình duy�
 import org.openqa.selenium.chrome.ChromeOptions;  // Tùy chỉnh khởi tạo Chrome
 import org.openqa.selenium.support.ui.ExpectedConditions; // Điều kiện chờ element
 import org.openqa.selenium.support.ui.WebDriverWait;      // Chờ đợi element xuất hiện
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -72,6 +75,48 @@ public class RsaEcomAgentB {
         System.out.println("Agent B đã answer cuộc gọi.");
         Thread.sleep(10000); // Giữ cuộc gọi trong 10s để mô phỏng đang nghe
     }
+//    @BeforeMethod
+//    @Test
+//    public void Transfertocskh() throws InterruptedException{
+//        // TRANSFER TO CSKH
+//        WebElement TransferCSKH = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER']")));
+//        TransferCSKH.click();
+//        // nhập mã dể transfer tới CSKH 30015
+//        WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//                By.xpath("//input[@id='TRANSFERTO']")));
+//        nhapsdtBox.sendKeys("30015");
+//        // chọn button tham vấn
+//        WebElement thamvan = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//                By.xpath("//button[@id='transferBtn']")));
+//        thamvan.click();
+//
+//        System.out.println("Đang gọi Agent B nhận cuộc gọi...");
+//        //login vô CSKH CALL IN
+//
+//        driver.get("https://ci-ob.fptshop.com.vn/Pharmacy/Agent");
+//
+//        WebElement insideBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//                By.name("UserName")));
+//        insideBox.sendKeys("33402");
+//
+//        WebElement passwordBox = driver.findElement(By.name("Password"));
+//        passwordBox.sendKeys("********"); // <-- nhớ thay pass thật
+//
+//        WebElement loginBtn1 = driver.findElement(By.xpath("//button[@type='submit']"));
+//        loginBtn1.click();
+//        // Chọn CSKH
+//        WebElement outboundCSKH = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//a[contains(text(),'Outbound CSKH')]")));
+//
+//        outboundCSKH.click();
+//        // DĂNG NHẬP HỆ THÔNG
+//        WebElement loginBtn3 = wait.until(ExpectedConditions.elementToBeClickable(
+//                By.xpath("//button[@id='log-in-mpt' and contains(@class,'logaccount-mpt')]")));
+//        loginBtn3.click();
+
+   // }
+    @AfterMethod
 
     // Hàm đóng trình duyệt sau khi test (tùy chọn)
     public void teardown() {

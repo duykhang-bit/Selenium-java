@@ -6,8 +6,10 @@
 
                 <class name="RsaEcomLc"/>
                 <!--<class name="CallCenterCSKH"/>
-                <class name="CallCenterVac" />
-                -->>
+
+                -->
+
+
 
             </classes>
         </test>
