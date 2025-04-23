@@ -4,9 +4,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -15,11 +17,23 @@ import java.util.Map;
 public class RsaEcomLc {
     WebDriver driver;
     WebDriverWait wait;
+    static ExtentReports extent;
+    ExtentTest test;
+
+    @BeforeSuite
+    public void setupReport() {
+        ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+        extent = new ExtentReports();
+        extent.attachReporter(spark);
+    }
+
+    @AfterSuite
+    public void flushReport() {
+        extent.flush();
+    }
 
     @BeforeMethod
-    @Test
-
-    public void runFlowLC() throws InterruptedException {
+    public void setup() {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
@@ -31,103 +45,93 @@ public class RsaEcomLc {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-        //truy cập web RSA ECOM lc
+    }
+
+    @Test
+    public void testLogin() {
+        test = extent.createTest("testLogin");
         driver.get("https://ci-rsa-ecom.frt.vn/");
-        // nhập user name
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
         userNameBox.sendKeys("tinvt4");
-        // nhập  passwword
         WebElement passwordBox = driver.findElement(By.name("LoginInput.Password"));
         passwordBox.sendKeys("********");
-        // Submit đăng nhập
         WebElement loginBtn1 = driver.findElement(By.id("kt_login_signin_submit"));
         loginBtn1.click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("kt_login_signin_submit")));
-        //Chọn menu
+        test.pass("Login successful");
+    }
+
+    @Test
+    public void testLoginAndSystemLogin() {
+        test = extent.createTest("testLoginAndSystemLogin");
+        testLogin();
         WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='ant-menu-submenu-title']")));
         menu.click();
-        // DĂNG NHẬP HỆ THÔNG
         WebElement loginBtn2 = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='A-SIGNIN-BTN']")));
         loginBtn2.click();
-        // Nhập sdt vô để call out
+        test.pass("System login successful");
+    }
+
+    @Test
+    public void testCallFlow() throws InterruptedException {
+        test = extent.createTest("testCallFlow");
+        testLoginAndSystemLogin();
         WebElement sdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@placeholder='Nhập số điện thoại']")));
         sdtBox.sendKeys("0835089254");
-        // nhân button call
         WebElement call1 = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
         call1.click();
-        // nhấn button hold
         WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
         HoldOncall.click();
-
-        Thread.sleep(6000); // giữ máy
-        // Chọn button tiếp tục
+        Thread.sleep(6000);
         WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
         Continuecall.click();
-        // Chọn button transfer
+        test.pass("Call flow completed successfully");
+    }
+
+    @Test
+    public void testTransferFlow() throws InterruptedException {
+        test = extent.createTest("testTransferFlow");
+        testCallFlow();
         WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-TRANSFER']")));
         TransferAgentB.click();
-        // nhập mã dể transfer tới RSA ECOM 30009
         WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@id='TRANSFERTO']")));
         nhapsdtBox.sendKeys("30009");
-        // chọn button tham vấn
-        WebElement thamvan = wait.until(ExpectedConditions.visibilityOfElementLocated(
+        WebElement thamvan = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
         thamvan.click();
 
-        System.out.println("Đang gọi Agent B nhận cuộc gọi...");
-
-
-        // GỌI QUA CallCenterVac:
-// Tạo object từ class CallCenterVac, class này chứa luồng xử lý Agent B nhận cuộc gọi ở hệ thống khác (VD: CSKH Vaccine)
-// Gọi hàm runFlow() để chạy quy trình Agent B login + trả lời cuộc gọi
-// Sau đó gọi teardown() để đóng trình duyệt sau khi hoàn tất
-//        CallCenterVac VAC = new CallCenterVac();
-//        VAC.runFlowVAC();   // Agent B answer
-//        VAC.teardown();
-//
-//
-//        // GỌI QUA CSKH
-//        CallCenterCSKH CSKH = new CallCenterCSKH();
-//        CSKH.runFlowCSKH();   // Agent B answer
-//        CSKH.teardown();
-
-
-        // gọi qua class GetTransferCall để mở tab mới trả lời cuộc gọi AgenT b
+        // Gọi agent B xử lý cuộc gọi
         RsaEcomAgentB agentB = new RsaEcomAgentB();
-        agentB.runFlow();   // Agent B answer
+        agentB.runFlow();
         agentB.teardown();
 
-
-        System.out.println("Tiếp tục chuyển cuộc gọi cho Agent B...");
-        // Chuyển cuộc gọi cho Agent B hẳn
         WebElement transferB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
         transferB.click();
-        //End CALL  AgentB
         WebElement endcallAgentB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-DROP']")));
         endcallAgentB.click();
-
-
+        test.pass("Transfer flow completed successfully");
     }
 
     @AfterMethod
-
     public void teardown() {
         if (driver != null) {
-           // driver.quit();
+            driver.quit();
         }
     }
 }
+
+
 
 //    public static void main(String[] args) {
 //        RsaEcomLc app = new RsaEcomLc();

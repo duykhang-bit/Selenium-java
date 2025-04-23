@@ -15,6 +15,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.10.0</version>
         </dependency>
+        <!--Hướng dẫn chi tiết dùng ExtentReports-->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
 
         <!-- WebDriver Manager -->
         <dependency>
