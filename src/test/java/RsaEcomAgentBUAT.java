@@ -8,14 +8,12 @@ import org.openqa.selenium.chrome.ChromeOptions;  // Tùy chỉnh khởi tạo C
 import org.openqa.selenium.support.ui.ExpectedConditions; // Điều kiện chờ element
 import org.openqa.selenium.support.ui.WebDriverWait;      // Chờ đợi element xuất hiện
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RsaEcomAgentB {
+public class RsaEcomAgentBUAT {
     WebDriver driver;
     WebDriverWait wait;
 
@@ -32,7 +30,7 @@ public class RsaEcomAgentB {
         driver.manage().window().maximize(); // Phóng to trình duyệt
         wait = new WebDriverWait(driver, Duration.ofSeconds(50)); // Chờ tối đa 50s để load element
 
-        driver.get("https://ci-rsa-ecom.frt.vn/"); // Mở URL hệ thống cần test
+        driver.get("https://uat-rsa-ecom.frt.vn/"); // Mở URL hệ thống cần test
 
         // Nhập username
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(

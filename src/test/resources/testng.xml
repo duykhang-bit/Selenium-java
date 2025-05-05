@@ -4,7 +4,7 @@
         <test name="RunTest">
             <classes>
 
-                <class name="RsaEcomLc"/>
+                <class name="RsaEcomLcCI"/>
                 <!--<class name="CallCenterCSKH"/>
 
                 -->
@@ -25,7 +25,7 @@
 
           <test name="RunCallFlow">
             <classes>
-              <class name="RsaEcomLc"/>
+              <class name="RsaEcomLcUAT"/>
             </classes>
           </test>
         </suite>

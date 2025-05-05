@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RsaEcomLc {
+public class RsaEcomLcUAT {
     WebDriver driver;
     WebDriverWait wait;
     static ExtentReports extent;
@@ -50,7 +50,7 @@ public class RsaEcomLc {
     @Test
     public void testLogin() {
         test = extent.createTest("testLogin");
-        driver.get("https://ci-rsa-ecom.frt.vn/");
+        driver.get("https://uat-rsa-ecom.frt.vn/");
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
         userNameBox.sendKeys("tinvt4");
@@ -104,13 +104,13 @@ public class RsaEcomLc {
         TransferAgentB.click();
         WebElement nhapsdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[@id='TRANSFERTO']")));
-        nhapsdtBox.sendKeys("30009");
+        nhapsdtBox.sendKeys("30007");
         WebElement thamvan = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
         thamvan.click();
 
         // Gọi agent B xử lý cuộc gọi
-        RsaEcomAgentB agentB = new RsaEcomAgentB();
+        RsaEcomAgentBUAT agentB = new RsaEcomAgentBUAT();
         agentB.runFlow();
         agentB.teardown();
 
