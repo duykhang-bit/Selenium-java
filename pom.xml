@@ -55,6 +55,15 @@
             <artifactId>selenium-devtools-v114</artifactId>
             <version>4.10.0</version>
         </dependency>
+        <!--report -->
+        <dependencies>
+            <dependency>
+                <groupId>com.aventstack</groupId>
+                <artifactId>extentreports</artifactId>
+                <version>5.0.9</version>
+            </dependency>
+        </dependencies>
+
 
     </dependencies>
 
