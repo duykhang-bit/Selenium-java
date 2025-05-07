@@ -89,11 +89,36 @@ public class RsaEcomLcCI {
         WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
         HoldOncall.click();
-        Thread.sleep(6000);
+        Thread.sleep(1000);
         WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
         Continuecall.click();
         test.pass("Call flow completed successfully");
+
+// Ghi nội dung note
+        WebElement Note = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='C2-NOTE-BTN']")));
+        Note.click();
+
+// Sửa lại để tìm đúng phần tử textarea thay vì input
+        WebElement Ghichu = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//textarea[@placeholder='Nhập ghi chú']")));
+        Ghichu.click();
+        Ghichu.sendKeys("Automation");
+
+
+
+// Lưu ghi chú
+        WebElement Luunote = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[.//span[text()='Xong']]")));
+        Luunote.click();
+
+
+
+
+
+
+
     }
 
     @Test
@@ -111,7 +136,7 @@ public class RsaEcomLcCI {
         thamvan.click();
 
         // Gọi agent B xử lý cuộc gọi
-        RsaEcomAgentBUAT agentB = new RsaEcomAgentBUAT();
+        RsaEcomAgentBCI agentB = new RsaEcomAgentBCI();
         agentB.runFlow();
         agentB.teardown();
 

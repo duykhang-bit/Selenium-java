@@ -36,7 +36,7 @@ public class RsaEcomAgentBCI {
         // Nhập username
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
-        userNameBox.sendKeys("Thuct5");
+        userNameBox.sendKeys("Hanhphm");
 
         // Nhập password
         WebElement passwordBox = driver.findElement(By.name("LoginInput.Password"));
@@ -64,7 +64,7 @@ public class RsaEcomAgentBCI {
                 By.xpath("//button[@id='ISREADY']")));
         readybtn.click();
 
-        Thread.sleep(3000); // Chờ trạng thái READY ổn định
+        //Thread.sleep(3000); // Chờ trạng thái READY ổn định
 
         // Click nút ANSWER để nghe máy
         WebElement answerbtn = wait.until(ExpectedConditions.elementToBeClickable(
@@ -73,6 +73,24 @@ public class RsaEcomAgentBCI {
 
         System.out.println("Agent B đã answer cuộc gọi.");
         Thread.sleep(10000); // Giữ cuộc gọi trong 10s để mô phỏng đang nghe
+        // Ghi nội dung note
+        WebElement Note = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='C2-NOTE-BTN']")));
+        Note.click();
+
+// Sửa lại để tìm đúng phần tử textarea thay vì input
+        WebElement Ghichu = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//textarea[@placeholder='Nhập ghi chú']")));
+        Ghichu.click();
+        Ghichu.sendKeys("Automation");
+
+
+
+// Lưu ghi chú
+        WebElement Luunote = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[.//span[text()='Xong']]")));
+        Luunote.click();
+
     }
 //    @BeforeMethod
 //    @Test
