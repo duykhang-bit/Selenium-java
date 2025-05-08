@@ -17,7 +17,7 @@ public class RsaEcomAgentBUAT {
     WebDriver driver;
     WebDriverWait wait;
 
-    public void runFlow() throws InterruptedException {
+    public void runFlowUAT() throws InterruptedException {
         WebDriverManager.chromedriver().setup(); // Tự động cài đặt/chạy ChromeDriver phù hợp
 
         ChromeOptions options = new ChromeOptions(); // Cấu hình trình duyệt

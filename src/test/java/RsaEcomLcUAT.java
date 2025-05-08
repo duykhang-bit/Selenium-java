@@ -137,8 +137,8 @@ public class RsaEcomLcUAT {
         thamvan.click();
 
         // Gọi agent B xử lý cuộc gọi
-        RsaEcomAgentBCI agentB = new RsaEcomAgentBCI();
-        agentB.runFlow();
+        RsaEcomAgentBUAT agentB = new RsaEcomAgentBUAT();
+        agentB.runFlowUAT();
 
 
 
