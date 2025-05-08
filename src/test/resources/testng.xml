@@ -3,27 +3,31 @@
 <suite name="AutomationSuite">
     <test name="TestRsaEcom">
         <classes>
-            <class name="RsaEcomLcCI"/>
+            <class name="RsaEcomLcUAT"/>
+            <!-- <class name="RsaEcomLcUAT"/> -->
+
         </classes>
-    </test>
-</suite>
+     </test>
+ </suite>
 
 
 
 
-        <!--
-        <suite name="Test Suite" verbose="1">
-          <listeners>
-              <listener class-name="org.testng.reporters.XMLReporter" />
-              <listener class-name="org.testng.reporters.EmailableReporter2" />
-          </listeners>
 
-          <test name="RunCallFlow">
-            <classes>
-              <class name="RsaEcomLcUAT"/>
-            </classes>
-          </test>
-        </suite>
-        -->
+
+         <!--
+         <suite name="Test Suite" verbose="1">
+           <listeners>
+               <listener class-name="org.testng.reporters.XMLReporter" />
+               <listener class-name="org.testng.reporters.EmailableReporter2" />
+           </listeners>
+
+           <test name="RunCallFlow">
+             <classes>
+               <class name="RsaEcomLcUAT"/>
+             </classes>
+           </test>
+         </suite>
+         -->
 
 

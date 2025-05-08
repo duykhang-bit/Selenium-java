@@ -1,19 +1,25 @@
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
+import org.testng.ITestResult;
 public class RsaEcomLcUAT {
     WebDriver driver;
     WebDriverWait wait;
@@ -50,7 +56,7 @@ public class RsaEcomLcUAT {
     @Test
     public void testLogin() {
         test = extent.createTest("testLogin");
-        driver.get("https://uat-rsa-ecom.frt.vn/");
+        driver.get("https://UAT-rsa-ecom.frt.vn/");
         WebElement userNameBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.name("LoginInput.UserNameOrEmailAddress")));
         userNameBox.sendKeys("tinvt4");
@@ -88,15 +94,36 @@ public class RsaEcomLcUAT {
         WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
         HoldOncall.click();
-        Thread.sleep(6000);
+        Thread.sleep(1000);
         WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
         Continuecall.click();
         test.pass("Call flow completed successfully");
+
+// Ghi nội dung note
+        WebElement Note = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='C2-NOTE-BTN']")));
+        Note.click();
+
+// Sửa lại để tìm đúng phần tử textarea thay vì input
+        WebElement Ghichu = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//textarea[@placeholder='Nhập ghi chú']")));
+        Ghichu.click();
+        Ghichu.sendKeys("Automation");
+
+
+
+// Lưu ghi chú
+        WebElement Luunote = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[.//span[text()='Xong']]")));
+        Luunote.click();
+
+
+
     }
 
     @Test
-    public void testTransferFlow() throws InterruptedException {
+    public void testTransferFlow1() throws InterruptedException {
         test = extent.createTest("testTransferFlow");
         testCallFlow();
         WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable(
@@ -110,9 +137,11 @@ public class RsaEcomLcUAT {
         thamvan.click();
 
         // Gọi agent B xử lý cuộc gọi
-        RsaEcomAgentBUAT agentB = new RsaEcomAgentBUAT();
+        RsaEcomAgentBCI agentB = new RsaEcomAgentBCI();
         agentB.runFlow();
-        agentB.teardown();
+
+
+
 
         WebElement transferB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
@@ -122,14 +151,42 @@ public class RsaEcomLcUAT {
         endcallAgentB.click();
         test.pass("Transfer flow completed successfully");
     }
+    //chup màn hình
+    public String takeScreenshot(String testName) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File src = ts.getScreenshotAs(OutputType.FILE);
+        String path = "test-output/screenshots/" + testName + "_" + System.currentTimeMillis() + ".png";
+        File dest = new File(path);
+        dest.getParentFile().mkdirs(); // Tạo thư mục nếu chưa có
+        try {
+            Files.copy(src.toPath(), dest.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return dest.getAbsolutePath();
+    }
+
+
 
     @AfterMethod
-    public void teardown() {
+    //
+    public void teardown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshotPath = takeScreenshot(result.getName());
+            test.fail("Test failed. Screenshot attached:").addScreenCaptureFromPath(screenshotPath);
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            test.pass("Test passed.");
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            test.skip("Test skipped.");
+        }
+
         if (driver != null) {
             driver.quit();
         }
     }
+
 }
+
 
 
 
