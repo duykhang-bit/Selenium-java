@@ -15,7 +15,8 @@
             <artifactId>selenium-java</artifactId>
             <version>4.10.0</version>
         </dependency>
-        <!--Hướng dẫn chi tiết dùng ExtentReports-->
+
+        <!-- ExtentReports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
@@ -49,22 +50,12 @@
             <version>1.2.10</version>
         </dependency>
 
-        <!-- Selenium DevTools (generic, tránh version cụ thể như -v135) -->
+        <!-- Selenium DevTools -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-devtools-v114</artifactId>
             <version>4.10.0</version>
         </dependency>
-        <!--report -->
-        <dependencies>
-            <dependency>
-                <groupId>com.aventstack</groupId>
-                <artifactId>extentreports</artifactId>
-                <version>5.0.9</version>
-            </dependency>
-        </dependencies>
-
-
     </dependencies>
 
     <build>

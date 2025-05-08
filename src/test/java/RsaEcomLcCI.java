@@ -10,10 +10,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import org.testng.ITestResult;
+
 
 public class RsaEcomLcCI {
     WebDriver driver;
@@ -122,7 +129,7 @@ public class RsaEcomLcCI {
     }
 
     @Test
-    public void testTransferFlow() throws InterruptedException {
+    public void testTransferFlow1() throws InterruptedException {
         test = extent.createTest("testTransferFlow");
         testCallFlow();
         WebElement TransferAgentB = wait.until(ExpectedConditions.elementToBeClickable(
@@ -138,7 +145,9 @@ public class RsaEcomLcCI {
         // Gọi agent B xử lý cuộc gọi
         RsaEcomAgentBCI agentB = new RsaEcomAgentBCI();
         agentB.runFlow();
-        agentB.teardown();
+
+
+
 
         WebElement transferB = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[@id='transferBtn']")));
@@ -148,14 +157,42 @@ public class RsaEcomLcCI {
         endcallAgentB.click();
         test.pass("Transfer flow completed successfully");
     }
+    //chup màn hình
+    public String takeScreenshot(String testName) {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File src = ts.getScreenshotAs(OutputType.FILE);
+        String path = "test-output/screenshots/" + testName + "_" + System.currentTimeMillis() + ".png";
+        File dest = new File(path);
+        dest.getParentFile().mkdirs(); // Tạo thư mục nếu chưa có
+        try {
+            Files.copy(src.toPath(), dest.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return dest.getAbsolutePath();
+    }
+
+
 
     @AfterMethod
-    public void teardown() {
+    //
+    public void teardown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshotPath = takeScreenshot(result.getName());
+            test.fail("Test failed. Screenshot attached:").addScreenCaptureFromPath(screenshotPath);
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            test.pass("Test passed.");
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            test.skip("Test skipped.");
+        }
+
         if (driver != null) {
             driver.quit();
         }
     }
+
 }
+
 
 
 

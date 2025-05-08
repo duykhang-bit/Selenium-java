@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-    <suite thread-count="3" parallel="classes" name="RunSuite">
-        <test name="RunTest">
-            <classes>
-
-                <class name="RsaEcomLcCI"/>
-                <!--<class name="CallCenterCSKH"/>
-
-                -->
-            </classes>
-        </test>
-    </suite>
-
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="AutomationSuite">
+    <test name="TestRsaEcom">
+        <classes>
+            <class name="RsaEcomLcCI"/>
+        </classes>
+    </test>
+</suite>
 
 
 
