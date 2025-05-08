@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +46,7 @@ public class RsaEcomAgentBCI {
         }
     }
 
+
     public void setupReport() {
         ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport_AgentB.html");
         extent = new ExtentReports();
@@ -71,7 +75,9 @@ public class RsaEcomAgentBCI {
 
     public void loginCallCenter() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ant-menu-submenu-title']"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("A-SIGNIN-BTN"))).click();
+        WebElement loginBtn2 = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@id='A-SIGNIN-BTN']")));
+        loginBtn2.click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ISREADY"))).click();
         test.info("Đăng nhập Call Center thành công.");
     }

@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 import org.testng.ITestResult;
-
-
 public class RsaEcomLcCI {
     WebDriver driver;
     WebDriverWait wait;
@@ -119,10 +117,6 @@ public class RsaEcomLcCI {
         WebElement Luunote = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[.//span[text()='Xong']]")));
         Luunote.click();
-
-
-
-
 
 
 
