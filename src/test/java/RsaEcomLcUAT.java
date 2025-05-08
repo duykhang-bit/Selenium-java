@@ -223,5 +223,33 @@ public class RsaEcomLcUAT {
 //        }
 //else{
 //    System.out.println("Yếu");
-//                }
+//
+//
+//
+//name: Run Selenium Tests
+//
+//on:
+//  push:
+//    branches:
+//      - master
+//  pull_request:
+//    branches:
+//      - master
+//
+//jobs:
+//  build:
+//    runs-on: ubuntu-latest
+//
+//    steps:
+//    - name: Checkout code
+//      uses: actions/checkout@v3
+//
+//    - name: Set up Java
+//      uses: actions/setup-java@v3
+//      with:
+//        java-version: '17'
+//        distribution: 'temurin'
+//
+//    - name: Build with Maven
+//      run: mvn clean test -DsuiteXmlFile=src/test/resources/testng.xml}
 
