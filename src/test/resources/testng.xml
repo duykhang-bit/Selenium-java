@@ -3,7 +3,7 @@
 <suite name="AutomationSuite">
     <test name="TestRsaEcom">
         <classes>
-            <class name="RsaEcomLcUAT"/>
+            <class name="RsaEcomLcCI"/>
             <!-- <class name="RsaEcomLcUAT"/> -->
 
         </classes>
