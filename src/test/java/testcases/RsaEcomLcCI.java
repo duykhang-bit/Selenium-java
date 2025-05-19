@@ -180,7 +180,7 @@ public class RsaEcomLcCI {
         }
 
         if (driver != null) {
-           // driver.quit();
+            driver.quit();
         }
     }
 
