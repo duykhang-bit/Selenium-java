@@ -29,8 +29,8 @@ public class CallFlowPage {
                 By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
         HoldOncall.click();
         Thread.sleep(1000);
-        WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
+        WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
         Continuecall.click();
         // Ghi nội dung note
         WebElement Note = wait.until(ExpectedConditions.elementToBeClickable(

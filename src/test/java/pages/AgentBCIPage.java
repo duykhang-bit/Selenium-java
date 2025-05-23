@@ -18,6 +18,7 @@ public class AgentBCIPage {
     }
 
     public void answerCall() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ISREADY")));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ISREADY"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("CALL-ACTION-BTN-ANSWER"))).click();
         test.info("Đã click ANSWER để nghe cuộc gọi.");

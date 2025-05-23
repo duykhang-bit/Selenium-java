@@ -73,8 +73,9 @@ public class BaseTest {
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         driver = new ChromeDriver(options);
+        driver.get("https://ci-rsa-ecom.frt.vn/");
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(90));
     }
 
     @AfterMethod
