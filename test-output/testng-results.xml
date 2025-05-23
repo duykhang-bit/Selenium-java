@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="2" failed="3" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-05-23T11:18:43 GMT+07:00" name="RSA Ecom Test Suite" finished-at="2025-05-23T11:23:28 GMT+07:00" duration-ms="285021">
+    <groups>
+    </groups>
+    <test started-at="2025-05-23T11:18:43 GMT+07:00" name="AgentB Test" finished-at="2025-05-23T11:20:00 GMT+07:00" duration-ms="76712">
+      <class name="testcases.RsaEcomAgentBCITest">
+        <test-method is-config="true" signature="setup(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:18:43 GMT+07:00" name="setup" finished-at="2025-05-23T11:18:57 GMT+07:00" duration-ms="14169" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=RsaEcomAgentBCITest.runFlow()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:18:57 GMT+07:00" name="setup" finished-at="2025-05-23T11:19:00 GMT+07:00" duration-ms="3050" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="runFlow()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:19:00 GMT+07:00" name="runFlow" finished-at="2025-05-23T11:19:59 GMT+07:00" duration-ms="58897" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.id: ISREADY (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54527}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54527/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fc7bf49cc63f1309eced3e712fb5c808]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.id: ISREADY (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54527}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54527/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fc7bf49cc63f1309eced3e712fb5c808
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at pages.AgentBCIPage.answerCall(AgentBCIPage.java:21)
+at testcases.RsaEcomAgentBCITest.runFlow(RsaEcomAgentBCITest.java:30)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runFlow -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:19:59 GMT+07:00" name="teardown" finished-at="2025-05-23T11:20:00 GMT+07:00" duration-ms="446" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:20:00 GMT+07:00" name="teardown" finished-at="2025-05-23T11:20:00 GMT+07:00" duration-ms="39" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=runFlow status=FAILURE method=RsaEcomAgentBCITest.runFlow()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- testcases.RsaEcomAgentBCITest -->
+    </test> <!-- AgentB Test -->
+    <test started-at="2025-05-23T11:20:00 GMT+07:00" name="LcCI Test" finished-at="2025-05-23T11:23:28 GMT+07:00" duration-ms="208295">
+      <class name="testcases.RsaEcomAgentBCITest">
+        <test-method is-config="true" signature="setupReport()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:18:43 GMT+07:00" name="setupReport" finished-at="2025-05-23T11:18:43 GMT+07:00" duration-ms="542" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupReport -->
+        <test-method is-config="true" signature="flushReport()[pri:0, instance:testcases.RsaEcomAgentBCITest@63021689]" started-at="2025-05-23T11:23:28 GMT+07:00" name="flushReport" finished-at="2025-05-23T11:23:30 GMT+07:00" duration-ms="2052" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flushReport -->
+      </class> <!-- testcases.RsaEcomAgentBCITest -->
+      <class name="testcases.RsaEcomLcCITest">
+        <test-method is-config="true" signature="setupReport()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:18:43 GMT+07:00" name="setupReport" finished-at="2025-05-23T11:18:43 GMT+07:00" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupReport -->
+        <test-method is-config="true" signature="setup(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:20:00 GMT+07:00" name="setup" finished-at="2025-05-23T11:20:13 GMT+07:00" duration-ms="12914" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=RsaEcomLcCITest.testCallFlow()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testCallFlow()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:20:13 GMT+07:00" name="testCallFlow" finished-at="2025-05-23T11:21:32 GMT+07:00" duration-ms="78861" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //textarea[@placeholder='Nhập ghi chú'] (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54781}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54781/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4a8a3c0e2a2fc707cb4449524dcded3f]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //textarea[@placeholder='Nhập ghi chú'] (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54781}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54781/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4a8a3c0e2a2fc707cb4449524dcded3f
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at pages.CallFlowPage.performCallFlow(CallFlowPage.java:39)
+at testcases.RsaEcomLcCITest.testCallFlow(RsaEcomLcCITest.java:50)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCallFlow -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:32 GMT+07:00" name="teardown" finished-at="2025-05-23T11:21:34 GMT+07:00" duration-ms="1890" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCallFlow status=FAILURE method=RsaEcomLcCITest.testCallFlow()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="setup(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:34 GMT+07:00" name="setup" finished-at="2025-05-23T11:21:40 GMT+07:00" duration-ms="6092" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=RsaEcomLcCITest.testLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:40 GMT+07:00" name="testLogin" finished-at="2025-05-23T11:21:45 GMT+07:00" duration-ms="5177" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:45 GMT+07:00" name="teardown" finished-at="2025-05-23T11:21:45 GMT+07:00" duration-ms="350" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testLogin status=SUCCESS method=RsaEcomLcCITest.testLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="setup(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:45 GMT+07:00" name="setup" finished-at="2025-05-23T11:21:52 GMT+07:00" duration-ms="6349" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=RsaEcomLcCITest.testLoginAndSystemLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testLoginAndSystemLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:21:52 GMT+07:00" name="testLoginAndSystemLogin" finished-at="2025-05-23T11:22:01 GMT+07:00" duration-ms="9488" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginAndSystemLogin -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:22:01 GMT+07:00" name="teardown" finished-at="2025-05-23T11:22:01 GMT+07:00" duration-ms="170" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testLoginAndSystemLogin status=SUCCESS method=RsaEcomLcCITest.testLoginAndSystemLogin()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="setup(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:22:01 GMT+07:00" name="setup" finished-at="2025-05-23T11:22:09 GMT+07:00" duration-ms="7845" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=RsaEcomLcCITest.testTransferFlow1()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testTransferFlow1()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:22:09 GMT+07:00" name="testTransferFlow1" finished-at="2025-05-23T11:23:27 GMT+07:00" duration-ms="77748" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <button id="CALL-ACTION-BTN-DROP" type="button" class="ant-btn ant-btn-default sc-bczRLJ jdQiOt CAL-btnAction">...</button> is not clickable at point (1353, 104). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered" aria-labelledby="rc_unique_1">...</div>
+  (Session info: chrome=137.0.7151.41)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [025f43d752b861d5a66bf8c886d67f97, clickElement {id=f.5FFB050055AD8C7E80DF551547352AD8.d.03BAF6C6A4D47954CF89501B537B2C2B.e.97}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55395}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:55395/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (025f43d752b861d5a66bf8c886d67f97)] -> xpath: //button[@id='CALL-ACTION-BTN-DROP']]
+Session ID: 025f43d752b861d5a66bf8c886d67f97]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <button id="CALL-ACTION-BTN-DROP" type="button" class="ant-btn ant-btn-default sc-bczRLJ jdQiOt CAL-btnAction">...</button> is not clickable at point (1353, 104). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered" aria-labelledby="rc_unique_1">...</div>
+  (Session info: chrome=137.0.7151.41)
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [025f43d752b861d5a66bf8c886d67f97, clickElement {id=f.5FFB050055AD8C7E80DF551547352AD8.d.03BAF6C6A4D47954CF89501B537B2C2B.e.97}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55395}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:55395/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (025f43d752b861d5a66bf8c886d67f97)] -> xpath: //button[@id='CALL-ACTION-BTN-DROP']]
+Session ID: 025f43d752b861d5a66bf8c886d67f97
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:185)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:134)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at pages.TransferPage.performTransfer(TransferPage.java:37)
+at testcases.RsaEcomLcCITest.testTransferFlow1(RsaEcomLcCITest.java:63)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTransferFlow1 -->
+        <test-method is-config="true" signature="teardown(org.testng.ITestResult)[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:23:27 GMT+07:00" name="teardown" finished-at="2025-05-23T11:23:28 GMT+07:00" duration-ms="1334" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testTransferFlow1 status=FAILURE method=RsaEcomLcCITest.testTransferFlow1()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method is-config="true" signature="flushReport()[pri:0, instance:testcases.RsaEcomLcCITest@3daa422a]" started-at="2025-05-23T11:23:30 GMT+07:00" name="flushReport" finished-at="2025-05-23T11:23:30 GMT+07:00" duration-ms="29" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- flushReport -->
+      </class> <!-- testcases.RsaEcomLcCITest -->
+    </test> <!-- LcCI Test -->
+  </suite> <!-- RSA Ecom Test Suite -->
+</testng-results>

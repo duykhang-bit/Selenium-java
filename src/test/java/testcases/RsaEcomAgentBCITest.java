@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.*;
+import pages.LoginPage;
+import pages.AgentBCIPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,41 +20,26 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RsaEcomAgentBCI {
-    WebDriver driver;
-    WebDriverWait wait;
-    ExtentReports extent;
-    ExtentTest test;
-
-    public void runFlow() {
-        try {
-            setupReport();     // tạo report
-            setup();           // mở trình duyệt, cấu hình chrome
-            test = extent.createTest("Agent BCI Answer Call Test");
-
-            driver.get("https://ci-rsa-ecom.frt.vn/");
-            loginToSystem("Hanhphm", "********"); // THAY bằng mật khẩu thật
-            loginCallCenter();
-            answerCall();
-
-            Thread.sleep(10000); // đợi để mô phỏng thời gian gọi
-            test.pass("Cuộc gọi được answer thành công.");
-        } catch (Exception e) {
-            String screenshotPath = takeScreenshot("Exception");
-            test.fail("Flow gặp lỗi: " + e.getMessage()).addScreenCaptureFromPath(screenshotPath);
-        } finally {
-            teardown();
-            flushReport();
-        }
+public class RsaEcomAgentBCITest extends BaseTest {
+    @Test
+    public void runFlow() throws InterruptedException {
+        test = extent.createTest("Agent BCI Answer Call Test");
+        LoginPage loginPage = new LoginPage(driver, wait, test);
+        loginPage.login("Hanhphm", "********");
+        AgentBCIPage agentBCIPage = new AgentBCIPage(driver, wait, test);
+        agentBCIPage.answerCall();
+        Thread.sleep(10000);
+        test.pass("Cuộc gọi được answer thành công.");
     }
 
-
+    @BeforeSuite
     public void setupReport() {
         ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport_AgentB.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
     }
 
+    @BeforeMethod
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -100,12 +88,14 @@ public class RsaEcomAgentBCI {
         return dest.getAbsolutePath();
     }
 
+    @AfterMethod
     public void teardown() {
         if (driver != null) {
             driver.quit();
         }
     }
 
+    @AfterSuite
     public void flushReport() {
         if (extent != null) {
             extent.flush();
@@ -114,4 +104,3 @@ public class RsaEcomAgentBCI {
 }
 
 // ... giữ nguyên code của bạn
-
