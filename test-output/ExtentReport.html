@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title></title>
+<title>Test Automation Report</title>
 <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
 <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
-<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
-<style type="text/css"></style></head><body class="spa -report standard">
+<style type="text/css"></style></head><body class="spa -report dark">
   <div class="app">
     <div class="layout">
 <div class="header navbar">
@@ -32,10 +32,10 @@
 </ul>
 <ul class="nav-right">
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary"></span></a>
+<a href="#"><span class="badge badge-primary">Selenium Test Results</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">May 19, 2025 03:02:42 PM</span></a>
+<a href="#"><span class="badge badge-primary">May 23, 2025 11:18:43 AM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -72,17 +77,104 @@
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
 </li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">RsaEcomAgentBCITest</a><a class="dropdown-item" href="#">RsaEcomLcCITest</a>
+</ul>
+</li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
         <li class="test-item"  status="pass" test-id="1"
           author=""
+          tag="RsaEcomAgentBCITest"
+          device="">
+          <div class="test-detail">
+            <p class="name">runFlow</p>
+            <p class="text-sm">
+              <span>11:18:43 AM</span> / <span>00:00:00:000</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">runFlow</h5>
+<span class='badge badge-success'>05.23.2025 11:18:43 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:18:43 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RsaEcomAgentBCITest</span></div>
+</div>
+</div>          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
           tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Agent BCI Answer Call Test</p>
+            <p class="text-sm">
+              <span>11:19:00 AM</span> / <span>00:00:59:432</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Agent BCI Answer Call Test</h5>
+<span class='badge badge-success'>05.23.2025 11:19:00 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:20:00 AM</span>
+<span class='badge badge-default'>00:00:59:432</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:19:09 AM</td>
+        <td>
+          Đăng nhập hệ thống thành công.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>11:20:00 AM</td>
+        <td>
+          Failed to capture screenshot: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '4.17.0', revision: 'e52b1be057*'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '15.5', java.version: '23.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.41, chrome: {chromedriverVersion: 137.0.7151.40 (84781974514a..., userDataDir: /var/folders/9v/7kggtdl90bn...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54527}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:54527/devtoo..., se:cdpVersion: 137.0.7151.41, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="3"
+          author=""
+          tag="RsaEcomLcCITest"
           device="">
           <div class="test-detail">
             <p class="name">testCallFlow</p>
             <p class="text-sm">
-              <span>3:02:50 PM</span> / <span>00:00:00:000</span>
+              <span>11:20:00 AM</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -91,143 +183,70 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">testCallFlow</h5>
-<span class='badge badge-success'>05.19.2025 3:02:50 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:02:50 PM</span>
+<span class='badge badge-success'>05.23.2025 11:20:00 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:20:00 AM</span>
 <span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="2"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testLoginAndSystemLogin</p>
-            <p class="text-sm">
-              <span>3:02:50 PM</span> / <span>00:00:00:000</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testLoginAndSystemLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:02:50 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:02:50 PM</span>
-<span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="3"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testLogin</p>
-            <p class="text-sm">
-              <span>3:02:50 PM</span> / <span>00:00:31:123</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:02:50 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:03:21 PM</span>
-<span class='badge badge-default'>00:00:31:123</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RsaEcomLcCITest</span></div>
 </div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:02:58 PM</td>
-        <td>
-          Login successful
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:03 PM</td>
-        <td>
-          System login successful
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:20 PM</td>
-        <td>
-          Call flow completed successfully
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:21 PM</td>
-        <td>
-          Test passed.
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
+</div>          </div>
         </li>
-        <li class="test-item"  status="pass" test-id="4"
+        <li class="test-item"  status="fail" test-id="4"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testLogin</p>
+            <p class="name">testCallFlow</p>
             <p class="text-sm">
-              <span>3:03:26 PM</span> / <span>00:00:07:966</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>11:20:13 AM</span> / <span>00:01:20:420</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:03:26 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:03:34 PM</span>
-<span class='badge badge-default'>00:00:07:966</span>
+<h5 class="test-status text-fail">testCallFlow</h5>
+<span class='badge badge-success'>05.23.2025 11:20:13 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:21:33 AM</span>
+<span class='badge badge-default'>00:01:20:420</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
 </div>
-</div><div class="detail-body mt-4">
+</div>    <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testCallFlow_20250523_112132.png' src="/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testCallFlow_20250523_112132.png">
+    
+    </div></div>
+<div class="detail-body mt-4">
 <table class="table table-sm">
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:34 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:20:19 AM</td>
         <td>
-          Login successful
+          Đăng nhập hệ thống thành công.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:34 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:20:23 AM</td>
         <td>
-          Test passed.
+          Đăng nhập Call Center thành công.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>11:21:33 AM</td>
+        <td>
+          Test failed. Screenshot captured at: /Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testCallFlow_20250523_112132.png
         </td>
       </tr>
   </tbody>
@@ -237,12 +256,12 @@
         </li>
         <li class="test-item"  status="pass" test-id="5"
           author=""
-          tag=""
+          tag="RsaEcomLcCITest"
           device="">
           <div class="test-detail">
-            <p class="name">testLoginAndSystemLogin</p>
+            <p class="name">testLogin</p>
             <p class="text-sm">
-              <span>3:03:40 PM</span> / <span>00:00:00:001</span>
+              <span>11:21:34 AM</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -250,14 +269,16 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testLoginAndSystemLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:03:40 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:03:40 PM</span>
-<span class='badge badge-default'>00:00:00:001</span>
+<h5 class="test-status text-pass">testLogin</h5>
+<span class='badge badge-success'>05.23.2025 11:21:34 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:21:34 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RsaEcomLcCITest</span></div>
 </div>
 </div>          </div>
         </li>
@@ -268,7 +289,7 @@
           <div class="test-detail">
             <p class="name">testLogin</p>
             <p class="text-sm">
-              <span>3:03:40 PM</span> / <span>00:00:15:129</span>
+              <span>11:21:40 AM</span> / <span>00:00:05:175</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -277,12 +298,13 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">testLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:03:40 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:03:55 PM</span>
-<span class='badge badge-default'>00:00:15:129</span>
+<span class='badge badge-success'>05.23.2025 11:21:40 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:21:45 AM</span>
+<span class='badge badge-default'>00:00:05:175</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
 </div>
 </div><div class="detail-body mt-4">
@@ -290,24 +312,17 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:21:45 AM</td>
+        <td>
+          Đăng nhập hệ thống thành công.
+        </td>
+      </tr>
+      <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:49 PM</td>
+        <td>11:21:45 AM</td>
         <td>
           Login successful
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:55 PM</td>
-        <td>
-          System login successful
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:03:55 PM</td>
-        <td>
-          Test passed.
         </td>
       </tr>
   </tbody>
@@ -317,64 +332,12 @@
         </li>
         <li class="test-item"  status="pass" test-id="7"
           author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testTransferFlow</p>
-            <p class="text-sm">
-              <span>3:04:02 PM</span> / <span>00:00:00:001</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testTransferFlow</h5>
-<span class='badge badge-success'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-default'>00:00:00:001</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="8"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testCallFlow</p>
-            <p class="text-sm">
-              <span>3:04:02 PM</span> / <span>00:00:00:000</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testCallFlow</h5>
-<span class='badge badge-success'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
-</div>
-</div>
-</div>          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="9"
-          author=""
-          tag=""
+          tag="RsaEcomLcCITest"
           device="">
           <div class="test-detail">
             <p class="name">testLoginAndSystemLogin</p>
             <p class="text-sm">
-              <span>3:04:02 PM</span> / <span>00:00:00:000</span>
+              <span>11:21:45 AM</span> / <span>00:00:00:000</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -383,13 +346,98 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">testLoginAndSystemLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:04:02 PM</span>
+<span class='badge badge-success'>05.23.2025 11:21:45 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:21:45 AM</span>
+<span class='badge badge-default'>00:00:00:000</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RsaEcomLcCITest</span></div>
+</div>
+</div>          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">testLoginAndSystemLogin</p>
+            <p class="text-sm">
+              <span>11:21:52 AM</span> / <span>00:00:09:487</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">testLoginAndSystemLogin</h5>
+<span class='badge badge-success'>05.23.2025 11:21:52 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:22:01 AM</span>
+<span class='badge badge-default'>00:00:09:487</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:21:57 AM</td>
+        <td>
+          Đăng nhập hệ thống thành công.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:22:01 AM</td>
+        <td>
+          Đăng nhập Call Center thành công.
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>11:22:01 AM</td>
+        <td>
+          System login successful
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag="RsaEcomLcCITest"
+          device="">
+          <div class="test-detail">
+            <p class="name">testTransferFlow1</p>
+            <p class="text-sm">
+              <span>11:22:01 AM</span> / <span>00:00:00:000</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">testTransferFlow1</h5>
+<span class='badge badge-success'>05.23.2025 11:22:01 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:22:01 AM</span>
 <span class='badge badge-default'>00:00:00:000</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RsaEcomLcCITest</span></div>
 </div>
 </div>          </div>
         </li>
@@ -398,9 +446,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testLogin</p>
+            <p class="name">testTransferFlow</p>
             <p class="text-sm">
-              <span>3:04:02 PM</span> / <span>00:03:06:320</span>
+              <span>11:22:09 AM</span> / <span>00:01:18:618</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -408,17 +456,18 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">testLogin</h5>
-<span class='badge badge-success'>05.19.2025 3:04:02 PM</span>
-<span class='badge badge-danger'>05.19.2025 3:07:08 PM</span>
-<span class='badge badge-default'>00:03:06:320</span>
+<h5 class="test-status text-fail">testTransferFlow</h5>
+<span class='badge badge-success'>05.23.2025 11:22:09 AM</span>
+<span class='badge badge-danger'>05.23.2025 11:23:28 AM</span>
+<span class='badge badge-default'>00:01:18:618</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
-<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
-<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
 </div>
 </div>
 </div>    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testTransferFlow1_1747642028669.png' src="/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testTransferFlow1_1747642028669.png">
+<img data-featherlight='/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testTransferFlow1_20250523_112327.png' src="/Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testTransferFlow1_20250523_112327.png">
     
     </div></div>
 <div class="detail-body mt-4">
@@ -426,31 +475,31 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:04:12 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:22:14 AM</td>
         <td>
-          Login successful
+          Đăng nhập hệ thống thành công.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:04:18 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:22:18 AM</td>
         <td>
-          System login successful
+          Đăng nhập Call Center thành công.
         </td>
       </tr>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:04:45 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>11:23:24 AM</td>
         <td>
           Call flow completed successfully
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>3:07:08 PM</td>
+        <td>11:23:28 AM</td>
         <td>
-          Test failed. Screenshot attached:
+          Test failed. Screenshot captured at: /Users/leduykhang/Documents/Automation/Selenium-java-master/test-output/screenshots/testTransferFlow1_20250523_112327.png
         </td>
       </tr>
   </tbody>
@@ -467,30 +516,133 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">RsaEcomAgentBCITest</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RsaEcomAgentBCITest</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:18:43 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>runFlow</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>4</span>
+</span>
+<p class="name">RsaEcomLcCITest</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RsaEcomLcCITest</h4>
+<span status="pass" class='badge log pass-bg'>4 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:20:00 AM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>testCallFlow</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:21:34 AM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>testLogin</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:21:45 AM</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>testLoginAndSystemLogin</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>11:22:01 AM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>testTransferFlow1</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>May 19, 2025 03:02:42 PM</h3>
+<h3>May 23, 2025 11:18:43 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>May 19, 2025 03:07:08 PM</h3>
+<h3>May 23, 2025 11:23:30 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>9</h3>
+<h3>7</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>3</h3>
 </div></div>
 </div>
 </div>
@@ -506,12 +658,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='90%'>
-<b>9</b> tests passed
+<div><small data-tooltip='70%'>
+<b>7</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='10%'><b>1</b> tests failed,
+<small data-tooltip='30%'><b>3</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -529,10 +681,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='92%'><b>12</b> events passed</small></div>
+<div><small data-tooltip='14%'><b>2</b> events passed</small></div>
 <div>
-<small data-tooltip='7%'><b>1</b> events failed,
-<b data-tooltip='%'>0</b> others
+<small data-tooltip='21%'><b>3</b> events failed,
+<b data-tooltip='%'>9</b> others
 </small>
 </div>
 </div>
@@ -548,17 +700,64 @@
 </div></div>
 <script>
 var timeline = {
-"testCallFlow":0,"testLoginAndSystemLogin":0,"testLogin":31.123,"testLogin":7.966,"testLoginAndSystemLogin":0.001,"testLogin":15.129,"testTransferFlow":0.001,"testCallFlow":0,"testLoginAndSystemLogin":0,"testLogin":186.32
+"runFlow":0,"Agent BCI Answer Call Test":59.432,"testCallFlow":0,"testCallFlow":80.42,"testLogin":0,"testLogin":5.175,"testLoginAndSystemLogin":0,"testLoginAndSystemLogin":9.487,"testTransferFlow1":0,"testTransferFlow":78.618
 };
 </script>
 <div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>RsaEcomAgentBCITest</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>RsaEcomLcCITest</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>Tester</td>
+<td>Your Name</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Chrome</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Mac OS X</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 </div>
 </div>
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 9,
-failParent: 1,
+passParent: 7,
+failParent: 3,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -574,16 +773,16 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 12,
-failEvents: 1,
+passEvents: 2,
+failEvents: 3,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 0
+infoEvents: 9
 };
 </script>        </div>
       </div>
     </div>
   </div>
-<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/js/spark-script.js"></script>
 <script type="text/javascript"></script></body>
 </html>
