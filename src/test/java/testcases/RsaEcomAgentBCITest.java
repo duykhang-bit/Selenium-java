@@ -74,20 +74,6 @@ public class RsaEcomAgentBCITest extends BaseTest {
         test.info("Đã click ANSWER để nghe cuộc gọi.");
     }
 
-    public String takeScreenshot(String testName) {
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        File src = ts.getScreenshotAs(OutputType.FILE);
-        String path = "test-output/screenshots/" + testName + "_" + System.currentTimeMillis() + ".png";
-        File dest = new File(path);
-        dest.getParentFile().mkdirs();
-        try {
-            Files.copy(src.toPath(), dest.toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return dest.getAbsolutePath();
-    }
-
     @AfterMethod
     public void teardown() {
         if (driver != null) {

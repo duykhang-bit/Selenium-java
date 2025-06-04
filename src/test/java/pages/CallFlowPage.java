@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.ElementNotInteractableException;
 
 public class CallFlowPage {
     private WebDriver driver;
@@ -19,30 +22,59 @@ public class CallFlowPage {
     }
 
     public void performCallFlow() throws InterruptedException {
-        WebElement sdtBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//input[@placeholder='Nhập số điện thoại']")));
-        sdtBox.sendKeys("0835089254");
-        WebElement call1 = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
-        call1.click();
-        WebElement HoldOncall = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
-        HoldOncall.click();
-        Thread.sleep(1000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
-        WebElement Continuecall = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
-        Continuecall.click();
-        // Ghi nội dung note
-        WebElement Note = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[@id='C2-NOTE-BTN']")));
-        Note.click();
-        WebElement Ghichu = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//textarea[@placeholder='Nhập ghi chú']")));
-        Ghichu.click();
-        Ghichu.sendKeys("Automation");
-        WebElement Luunote = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[.//span[text()='Xong']]")));
-        Luunote.click();
-        test.info("Call flow completed successfully");
+        try {
+            // Input phone number
+            WebElement sdtBox = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//input[@placeholder='Nhập số điện thoại']")));
+            wait.until(ExpectedConditions.elementToBeClickable(sdtBox));
+            sdtBox.clear();
+            sdtBox.sendKeys("0835089254");
+            test.info("Đã nhập số điện thoại");
+
+            // Click call button
+            WebElement callBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@id='CALL-ACTION-BTN-CALL']")));
+            callBtn.click();
+            test.info("Đã click nút gọi");
+
+            // Click hold button
+            WebElement holdBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@id='CALL-ACTION-BTN-HOLD']")));
+            holdBtn.click();
+            test.info("Đã click nút giữ máy");
+
+            // Wait and click continue button
+            Thread.sleep(1000);
+            WebElement continueBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@id='CALL-ACTION-BTN-RETRIEVE']")));
+            continueBtn.click();
+            test.info("Đã click nút tiếp tục");
+
+            // Click note button
+            WebElement noteBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@id='C2-NOTE-BTN']")));
+            noteBtn.click();
+            test.info("Đã click nút ghi chú");
+
+            // Input note
+            WebElement noteInput = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//textarea[@placeholder='Nhập ghi chú']")));
+            noteInput.clear();
+            noteInput.sendKeys("Automation");
+            test.info("Đã nhập ghi chú");
+
+        } catch (TimeoutException e) {
+            test.fail("Timeout khi chờ element xuất hiện: " + e.getMessage());
+            throw e;
+        } catch (ElementNotInteractableException e) {
+            test.fail("Không thể tương tác với element: " + e.getMessage());
+            throw e;
+        } catch (NoSuchElementException e) {
+            test.fail("Không tìm thấy element: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            test.fail("Lỗi không xác định trong quy trình gọi: " + e.getMessage());
+            throw e;
+        }
     }
 } 

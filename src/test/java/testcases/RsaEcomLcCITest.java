@@ -63,21 +63,6 @@ public class RsaEcomLcCITest extends BaseTest {
         transferPage.performTransfer();
         test.pass("Transfer flow completed successfully");
     }
-
-    // Giữ lại hàm takeScreenshot nếu cần dùng trong test
-    public String takeScreenshot(String testName) {
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        File src = ts.getScreenshotAs(OutputType.FILE);
-        String path = "test-output/screenshots/" + testName + "_" + System.currentTimeMillis() + ".png";
-        File dest = new File(path);
-        dest.getParentFile().mkdirs();
-        try {
-            Files.copy(src.toPath(), dest.toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return dest.getAbsolutePath();
-    }
 }
 
 
