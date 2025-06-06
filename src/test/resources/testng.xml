@@ -6,15 +6,16 @@
         <listener class-name="org.testng.reporters.EmailableReporter2" />
     </listeners>
     
-    <test name="AgentB Test">
+    <!--<test name="AgentB Test">
         <classes>
             <class name="testcases.RsaEcomAgentBCITest"/>
         </classes>
     </test>
+         -->
     
     <test name="LcCI Test">
         <classes>
-            <class name="testcases.RsaEcomLcCITest"/>
+            <class name="RsaEcomLcUAT"/>
         </classes>
     </test>
 </suite>
