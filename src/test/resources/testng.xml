@@ -13,7 +13,7 @@
     </test>
          -->
     
-    <test name="LcCI Test">
+    <test name="utils">
         <classes>
             <class name="RsaEcomLcUAT"/>
         </classes>
