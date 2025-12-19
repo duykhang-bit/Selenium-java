@@ -1,4 +1,4 @@
-// Import các thư viện cần thiết
+package testcases;// Import các thư viện cần thiết
 import io.github.bonigarcia.wdm.WebDriverManager; // Quản lý driver cho trình duyệt
 import org.openqa.selenium.By;                     // Dùng để tìm element theo các loại locator
 import org.openqa.selenium.WebDriver;             // Interface chính để điều khiển trình duyệt

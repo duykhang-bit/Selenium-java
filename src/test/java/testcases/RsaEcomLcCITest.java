@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import base.BaseTest;
 
 public class RsaEcomLcCITest extends BaseTest {
     @Test
