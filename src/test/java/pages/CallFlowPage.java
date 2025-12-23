@@ -11,6 +11,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.ElementNotInteractableException;
 
 public class CallFlowPage {
+    @SuppressWarnings("unused")
     private WebDriver driver;
     private WebDriverWait wait;
     private ExtentTest test;

@@ -3,7 +3,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -48,9 +47,6 @@ public class Callcenter {
         WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ant-menu-submenu-title']")));
         menu.click();
 
-
-        //Nhạp tài khoản
-        Actions actions = new Actions(driver);
         driver.get("https://ci-rsa-ecom.frt.vn/call-center/call-history");
          //Xác minh text "Danh sách cuộc gọi" có hiển thị tại màn hình danh sách cuộc gọi
         WebElement title = driver.findElement(By.xpath("//div[contains(@class, 'CAL02-head-title')]"));

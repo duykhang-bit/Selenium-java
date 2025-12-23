@@ -1,8 +1,6 @@
 package utils;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ReportNotifier {
     private static final String REPO_URL = "https://duykhang-bit.github.io/Selenium-java/";

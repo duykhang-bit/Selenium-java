@@ -4,9 +4,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ContentType;
-import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,14 +37,15 @@ public class WorkplaceReporter {
             request.setEntity(builder.build());
 
             // Send request
-            org.apache.hc.core5.http.ClassicHttpResponse response = 
-                (org.apache.hc.core5.http.ClassicHttpResponse) client.execute(request);
-
-            if (response.getCode() == 200) {
-                System.out.println("Report sent successfully to Workplace!");
-            } else {
-                System.out.println("Failed to send report. Status code: " + response.getCode());
-                System.out.println("Response: " + IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+            @SuppressWarnings("deprecation")
+            CloseableHttpResponse response = client.execute(request);
+            try (response) {
+                if (response.getCode() == 200) {
+                    System.out.println("Report sent successfully to Workplace!");
+                } else {
+                    System.out.println("Failed to send report. Status code: " + response.getCode());
+                    System.out.println("Response: " + IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+                }
             }
 
         } catch (IOException e) {

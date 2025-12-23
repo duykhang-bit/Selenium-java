@@ -1,5 +1,5 @@
 package testcases;
-import base.BaseTest;
+import base.BaseTest1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,14 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 
-public class RsaEcomLcUAT extends BaseTest {
+public class RsaEcomLcUAT extends BaseTest1 {
     
     @Override
     protected String getBaseUrl() {
         return "https://UAT-rsa-ecom.frt.vn/";
     }
 
-    @Override
     protected long getWaitTimeout() {
         return 50;
     }

@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.Duration;
-import java.util.List;
 
 public class TestNhapKhacXuatKhac {
 
@@ -88,7 +87,7 @@ public class TestNhapKhacXuatKhac {
             // Chờ cho một element đặc trưng của trang Nhập khác xuất khác xuất hiện
             System.out.println("Bắt đầu chờ ô tìm kiếm Mã phiếu...");
             try {
-                WebElement maPhieuSearchInput = wait.until(ExpectedConditions.elementToBeClickable(
+                wait.until(ExpectedConditions.elementToBeClickable(
                         By.xpath("//input[contains(@placeholder,'Tìm kiếm')]")));
                 System.out.println("Đã chờ ô tìm kiếm xuất hiện và có thể click.");
             } catch (TimeoutException e) {

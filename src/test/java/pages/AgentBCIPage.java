@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AgentBCIPage {
+    @SuppressWarnings("unused")
     private WebDriver driver;
     private WebDriverWait wait;
     private ExtentTest test;
