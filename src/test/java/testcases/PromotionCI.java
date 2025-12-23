@@ -56,3 +56,19 @@ public class PromotionCI extends BaseTest1 {
         test.pass("✅ Đăng nhập thành công - URL chứa 'manager'");
     }
 }
+
+
+//thứ tự run test
+//1. @BeforeSuite (setupReport)
+//   ↓
+//           2. @BeforeMethod (setup) → Mở browser, navigate
+//   ↓
+//           3. TestListener.onTestStart()
+//   ↓
+//           4. @Test (testLogin) → Chạy test
+//   ↓
+//           5. TestListener.onTestSuccess/Failure()
+//   ↓
+//           6. @AfterMethod (teardown) → Screenshot, đóng browser
+//   ↓
+//           7. @AfterSuite (flushReport) → Ghi report

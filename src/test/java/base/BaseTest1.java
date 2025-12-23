@@ -75,7 +75,18 @@ public class BaseTest1 {
         test.info("📄 Page Title: " + driver.getTitle());
         test.info("🔗 Current URL: " + driver.getCurrentUrl());
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Sử dụng timeout từ subclass nếu có, mặc định là 30 giây
+        long timeoutSeconds = 30; // Default timeout
+        try {
+            java.lang.reflect.Method method = this.getClass().getMethod("getWaitTimeout");
+            if (method != null) {
+                timeoutSeconds = (Long) method.invoke(this);
+            }
+        } catch (Exception e) {
+            // Nếu không có method getWaitTimeout, dùng default
+        }
+        wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        test.info("⏱️ Wait timeout set to: " + timeoutSeconds + " seconds");
     }
 
     protected String getBaseUrl() {

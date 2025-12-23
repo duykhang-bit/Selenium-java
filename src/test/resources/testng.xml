@@ -15,7 +15,12 @@
     
     <test name="utils">
         <classes>
-            <class name="RsaEcomLcUAT"/>
+            <class name="testcases.RsaEcomLcUAT"/>
+        </classes>
+    </test>
+    <test name="PromotionCI">
+        <classes>
+            <class name="testcases.PromotionCI"/>
         </classes>
     </test>
 </suite>
