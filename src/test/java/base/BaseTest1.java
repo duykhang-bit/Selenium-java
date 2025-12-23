@@ -52,6 +52,11 @@ public class BaseTest1 {
     @BeforeMethod
     public void setup(ITestResult result) {
         test = extent.createTest(result.getMethod().getMethodName());
+        
+        // Thêm thông tin test
+        test.info("🚀 Starting test: " + result.getMethod().getMethodName());
+        test.info("Test Class: " + result.getTestClass().getName());
+        test.info("Base URL: " + getBaseUrl());
 
         WebDriverManager.chromedriver().setup();
 
@@ -63,7 +68,12 @@ public class BaseTest1 {
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
+        test.info("🌐 Browser initialized: Chrome");
+        test.info("📱 Navigating to: " + getBaseUrl());
         driver.get(getBaseUrl());
+        test.info("✓ Page loaded successfully");
+        test.info("📄 Page Title: " + driver.getTitle());
+        test.info("🔗 Current URL: " + driver.getCurrentUrl());
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
@@ -74,25 +84,91 @@ public class BaseTest1 {
 
     @AfterMethod
     public void teardown(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
+        // Log kết quả test
+        switch (result.getStatus()) {
+            case ITestResult.SUCCESS:
+                test.pass("✅ Test completed successfully");
+                // Capture screenshot cho test thành công
+                try {
+                    if (driver != null) {
+                        File src = ((TakesScreenshot) driver)
+                                .getScreenshotAs(OutputType.FILE);
+
+                        String screenshotDir = "test-output/screenshots";
+                        File dir = new File(screenshotDir);
+                        if (!dir.exists()) {
+                            dir.mkdirs();
+                        }
+                        
+                        String fileName = result.getName() + "_SUCCESS_"
+                                + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+                                + ".png";
+                        String fullPath = screenshotDir + File.separator + fileName;
+
+                        FileUtils.copyFile(src, new File(fullPath));
+                        // Dùng relative path từ report location (dùng forward slash)
+                        String relativePath = "screenshots/" + fileName;
+                        test.pass("📸 Screenshot captured - Test Passed Successfully")
+                            .addScreenCaptureFromPath(relativePath);
+                    }
+                } catch (Exception e) {
+                    test.warning("Could not capture screenshot: " + e.getMessage());
+                    e.printStackTrace();
+                }
+                break;
+            case ITestResult.FAILURE:
+                test.fail("❌ Test failed");
+                if (result.getThrowable() != null) {
+                    test.fail("Error: " + result.getThrowable().getMessage());
+                }
+                // Capture screenshot cho test thất bại
+                try {
+                    if (driver != null) {
+                        File src = ((TakesScreenshot) driver)
+                                .getScreenshotAs(OutputType.FILE);
+
+                        String screenshotDir = "test-output/screenshots";
+                        File dir = new File(screenshotDir);
+                        if (!dir.exists()) {
+                            dir.mkdirs();
+                        }
+                        
+                        String fileName = result.getName() + "_FAILURE_"
+                                + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+                                + ".png";
+                        String fullPath = screenshotDir + File.separator + fileName;
+
+                        FileUtils.copyFile(src, new File(fullPath));
+                        // Dùng relative path từ report location (dùng forward slash)
+                        String relativePath = "screenshots/" + fileName;
+                        test.fail("📸 Screenshot captured - Test Failed")
+                            .addScreenCaptureFromPath(relativePath);
+                    }
+                } catch (Exception e) {
+                    test.warning("Could not capture screenshot: " + e.getMessage());
+                    e.printStackTrace();
+                }
+                break;
+            case ITestResult.SKIP:
+                test.skip("⏭️ Test was skipped");
+                break;
+        }
+        
+        // Log thông tin cuối cùng
+        if (driver != null) {
             try {
-                File src = ((TakesScreenshot) driver)
-                        .getScreenshotAs(OutputType.FILE);
-
-                String path = "screenshots/"
-                        + result.getName() + "_"
-                        + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
-                        + ".png";
-
-                FileUtils.copyFile(src, new File(path));
-                test.addScreenCaptureFromPath(path);
+                test.info("🔗 Final URL: " + driver.getCurrentUrl());
+                test.info("📄 Final Page Title: " + driver.getTitle());
             } catch (Exception e) {
-                e.printStackTrace();
+                // Ignore if driver is closed
             }
         }
+        
+        test.info("🏁 Test execution completed");
 
         if (driver != null) {
             driver.quit();
+            test.info("🔒 Browser closed");
         }
     }
 
