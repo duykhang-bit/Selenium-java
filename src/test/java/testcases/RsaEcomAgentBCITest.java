@@ -1,6 +1,6 @@
 package testcases;
 
-import base.BaseTest;
+import base.BaseTest1;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -18,7 +18,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RsaEcomAgentBCITest extends BaseTest {
+public class RsaEcomAgentBCITest extends BaseTest1 {
     @Test
     public void runFlow() throws InterruptedException {
         test = extent.createTest("Agent BCI Answer Call Test");
