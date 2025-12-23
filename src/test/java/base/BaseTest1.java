@@ -2,6 +2,7 @@ package base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -98,8 +99,8 @@ public class BaseTest1 {
         // Log kết quả test
         switch (result.getStatus()) {
             case ITestResult.SUCCESS:
-                test.pass("✅ Test completed successfully");
-                // Capture screenshot cho test thành công
+                // Capture screenshot trước, sau đó gắn vào dòng pass
+                String successScreenshotPath = null;
                 try {
                     if (driver != null) {
                         File src = ((TakesScreenshot) driver)
@@ -117,22 +118,34 @@ public class BaseTest1 {
                         String fullPath = screenshotDir + File.separator + fileName;
 
                         FileUtils.copyFile(src, new File(fullPath));
-                        // Dùng relative path từ report location (dùng forward slash)
-                        String relativePath = "screenshots/" + fileName;
-                        test.pass("📸 Screenshot captured - Test Passed Successfully")
-                            .addScreenCaptureFromPath(relativePath);
+                        // Lưu cả full path và relative path
+                        successScreenshotPath = fullPath;
                     }
                 } catch (Exception e) {
                     test.warning("Could not capture screenshot: " + e.getMessage());
                     e.printStackTrace();
                 }
+                // Gắn screenshot ngay vào dòng pass
+                if (successScreenshotPath != null) {
+                    try {
+                        // Thử dùng MediaEntityBuilder với full path
+                        String relativePath = "screenshots/" + new File(successScreenshotPath).getName();
+                        test.pass("✅ Test completed successfully", 
+                            MediaEntityBuilder.createScreenCaptureFromPath(relativePath).build());
+                    } catch (Exception e) {
+                        // Fallback nếu MediaEntityBuilder không hoạt động
+                        test.warning("MediaEntityBuilder failed: " + e.getMessage());
+                        String relativePath = "screenshots/" + new File(successScreenshotPath).getName();
+                        test.pass("✅ Test completed successfully")
+                            .addScreenCaptureFromPath(relativePath);
+                    }
+                } else {
+                    test.pass("✅ Test completed successfully");
+                }
                 break;
             case ITestResult.FAILURE:
-                test.fail("❌ Test failed");
-                if (result.getThrowable() != null) {
-                    test.fail("Error: " + result.getThrowable().getMessage());
-                }
-                // Capture screenshot cho test thất bại
+                // Capture screenshot trước, sau đó gắn vào dòng fail
+                String failureScreenshotPath = null;
                 try {
                     if (driver != null) {
                         File src = ((TakesScreenshot) driver)
@@ -150,14 +163,32 @@ public class BaseTest1 {
                         String fullPath = screenshotDir + File.separator + fileName;
 
                         FileUtils.copyFile(src, new File(fullPath));
-                        // Dùng relative path từ report location (dùng forward slash)
-                        String relativePath = "screenshots/" + fileName;
-                        test.fail("📸 Screenshot captured - Test Failed")
-                            .addScreenCaptureFromPath(relativePath);
+                        // Lưu cả full path và relative path
+                        failureScreenshotPath = fullPath;
                     }
                 } catch (Exception e) {
                     test.warning("Could not capture screenshot: " + e.getMessage());
                     e.printStackTrace();
+                }
+                // Gắn screenshot ngay vào dòng fail
+                if (failureScreenshotPath != null) {
+                    try {
+                        // Thử dùng MediaEntityBuilder với relative path
+                        String relativePath = "screenshots/" + new File(failureScreenshotPath).getName();
+                        test.fail("❌ Test failed", 
+                            MediaEntityBuilder.createScreenCaptureFromPath(relativePath).build());
+                    } catch (Exception e) {
+                        // Fallback nếu MediaEntityBuilder không hoạt động
+                        test.warning("MediaEntityBuilder failed: " + e.getMessage());
+                        String relativePath = "screenshots/" + new File(failureScreenshotPath).getName();
+                        test.fail("❌ Test failed")
+                            .addScreenCaptureFromPath(relativePath);
+                    }
+                } else {
+                    test.fail("❌ Test failed");
+                }
+                if (result.getThrowable() != null) {
+                    test.fail("Error: " + result.getThrowable().getMessage());
                 }
                 break;
             case ITestResult.SKIP:
