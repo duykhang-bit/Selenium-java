@@ -1,4 +1,6 @@
 package testcases;
+import com.aventstack.extentreports.ExtentTest;
+
 
 import base.BaseTest1;
 import listeners.TestListener;
@@ -17,152 +19,163 @@ public class PromotionCI extends BaseTest1 {
         return "https://ci-promotion.frt.vn/manager-promotion-list";
     }
 
-    @Test(description = "Test đăng nhập vào hệ thống Promotion CI")
-    public void testLogin() {
-        // Log bước 1: Nhập username
-        test.info("📝 Bước 1: Nhập username");
+    // =================================================
+    // FULL FLOW - TẠO CTKM (TC01 → TC06)
+    // =================================================
+    @Test(description = "FULL FLOW - Tạo CTKM Promotion CI")
+    public void testCreatePromotionFlow() {
+
+        /* =========================
+         * TC01 - LOGIN
+         * ========================= */
+        ExtentTest tc01 = test.createNode("TC01 - Login hệ thống");
+
+        tc01.info("Nhập username");
         WebElement userNameBox = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
+                ExpectedConditions.elementToBeClickable(
                         By.name("LoginInput.UserNameOrEmailAddress")));
-        wait.until(ExpectedConditions.elementToBeClickable(userNameBox));
         userNameBox.clear();
         userNameBox.sendKeys("giant");
-        test.pass("✅ Đã nhập username: giant");
 
-        // Log bước 2: Nhập password
-        test.info("📝 Bước 2: Nhập password");
+        tc01.info("Nhập password");
         WebElement passwordBox = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
+                ExpectedConditions.elementToBeClickable(
                         By.name("LoginInput.Password")));
-        wait.until(ExpectedConditions.elementToBeClickable(passwordBox));
         passwordBox.clear();
         passwordBox.sendKeys("********");
-        test.pass("✅ Đã nhập password");
 
-        // Log bước 3: Click nút đăng nhập
-        test.info("📝 Bước 3: Click nút đăng nhập");
-        WebElement loginBtn = wait.until(
-                ExpectedConditions.elementToBeClickable(
-                        By.id("kt_login_signin_submit")));
-        loginBtn.click();
-        test.pass("✅ Đã click nút đăng nhập");
+        tc01.info("Click đăng nhập");
+        driver.findElement(By.id("kt_login_signin_submit")).click();
 
-        // Log bước 4: Chờ chuyển trang
-        test.info("📝 Bước 4: Chờ chuyển đến trang manager");
         wait.until(ExpectedConditions.urlContains("manager"));
-        test.pass("✅ Đã chuyển đến trang manager");
+        Assert.assertTrue(driver.getCurrentUrl().contains("manager"),
+                "Login FAILED");
 
-        // Log bước 5: Verify đăng nhập thành công
-        test.info("📝 Bước 5: Verify đăng nhập thành công");
-        String currentUrl = driver.getCurrentUrl();
-        test.info("🔗 Current URL: " + currentUrl);
-        test.info("📄 Page Title: " + driver.getTitle());
-        
-        Assert.assertTrue(
-                currentUrl.contains("manager"),
-                "Login FAILED"
+        tc01.pass("Login thành công");
+
+        /* =========================
+         * TC02 - TẠO CTKM
+         * ========================= */
+        ExtentTest tc02 = test.createNode("TC02 - Tạo CTKM");
+
+        tc02.info("Click button tạo CTKM");
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'actionHeader')]"))).click();
+
+        tc02.info("Nhập tên CTKM");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.id("promotiongeneralinfor_name")))
+                .sendKeys("Automation Test");
+
+        tc02.info("Nhập ghi chú");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.id("promotiongeneralinfor_remark")))
+                .sendKeys("Automation Test team Noti1");
+
+        tc02.pass("Tạo CTKM OK");
+
+        /* =========================
+         * TC03 - THỜI GIAN + PHƯƠNG THỨC
+         * ========================= */
+        ExtentTest tc03 = test.createNode("TC03 - Chọn thời gian & phương thức");
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-picker-range')]"))).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//td[@title='2025-12-31']"))).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//td[@title='2025-12-31']"))).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-select-selector')]"))).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(text(),'Zalo')]"))).click();
+
+        tc03.pass("Chọn thời gian & phương thức OK");
+
+        /* =========================
+         * TC04 - THUỘC CHIẾN DỊCH
+         * ========================= */
+        ExtentTest tc04 = test.createNode("TC04 - Thuộc chiến dịch");
+
+        WebElement campaignBox = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.id("promotiongeneralinfor_campaignId")));
+        campaignBox.sendKeys("CD-1225-059");
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-select-item-option') and contains(.,'CD-1225-059')]")))
+                .click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//span[contains(text(),'Tiếp theo')]"))).click();
+
+        tc04.pass("Hoàn tất màn 1");
+
+        /* =========================
+         * TC05 - NHÓM CTKM
+         * ========================= */
+        ExtentTest tc05 = test.createNode("TC05 - Nhóm CTKM");
+
+        WebElement nhom = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.id("promotionClassId")));
+        nhom.sendKeys("Sản Phẩm");
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-select-item-option-content') and contains(.,'Sản phẩm')]")))
+                .click();
+
+        tc05.pass("Chọn nhóm CTKM OK");
+
+        /* =========================
+         * TC06 - LOẠI CTKM
+         * ========================= */
+        ExtentTest tc06 = test.createNode("TC06 - Loại CTKM");
+
+        WebElement loai = wait.until(ExpectedConditions.elementToBeClickable(
+                        By.id("promotionTypeID")));
+        loai.click();
+        loai.sendKeys("Giảm giá sản phẩm");
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-select-item-option-content') and contains(.,'Giảm giá sản phẩm')]")))
+                .click();
+
+        tc06.pass("Chọn loại CTKM OK");
+    
+/* =========================
+ * TC07 - KHU VỰC HIỂN THỊ
+ * ========================= */
+        ExtentTest tc07 = test.createNode("TC07 - Khu vực hiển thị khuyến mãi");
+// cách bắt ant design element
+        By displayAreaDropdownBy = By.xpath(
+        "//label[contains(text(),'Khu vực hiển thị khuyến mãi')]" +
+        "/ancestor::div[contains(@class,'ant-form-item')]" +
+        "//div[contains(@class,'ant-select-selector')]"
         );
-        test.pass("✅ Đăng nhập thành công - URL chứa 'manager'");
-    }
 
-    @Test(description = "Test tạo CTKM")
-    public void testTaoCTKM() {
-        testLogin();
-        
-        // bấm button tạo CTKM
-        test.info("📝 Bước 6: Bấm button tạo CTKM");
-        WebElement createPromotionBtn = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[contains(@class,'actionHeader')]")));
-        createPromotionBtn.click();
-        test.pass("✅ Đã bấm button tạo CTKM");
+        WebElement displayAreaDropdown = wait.until(
+        ExpectedConditions.elementToBeClickable(displayAreaDropdownBy)
+        );
 
-        // Tên CTKM
-        test.info("📝 Bước 7: Nhập tên CTKM");
-        WebElement nameCTKMBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.id("promotiongeneralinfor_name")));
-        nameCTKMBox.clear();
-        nameCTKMBox.sendKeys("Automation Test team Noti");
-        test.pass("✅ Đã nhập tên CTKM");
+        displayAreaDropdown.click();
 
-        // Ghi chú
-        test.info("📝 Bước 8: Nhập ghi chú");
-        WebElement noteCTKMBox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.id("promotiongeneralinfor_remark")));
-        noteCTKMBox.clear();
-        noteCTKMBox.sendKeys("Automation Test team Noti1");
-        test.pass("✅ Đã nhập ghi chú");
-        
-        // Chọn Thời gian
-        test.info("📝 Bước 9: Nhập thời gian");
-        WebElement timeCTKMBox = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@class='ant-picker ant-picker-range ant-picker-middle custom-control']")));
-        timeCTKMBox.click();
-        
-        // time start
-        String date = "2025-12-29";
-        WebElement timeStartBox = wait.until(
-            ExpectedConditions.elementToBeClickable(
-                By.xpath("//td[@title='" + date + "']")));
-        timeStartBox.click();
-        test.pass("✅ Đã nhập thời gian start");
-        
-        // time end
-        String date1 = "2025-12-31";
-        WebElement timeEndBox = wait.until(
-            ExpectedConditions.elementToBeClickable(
-                By.xpath("//td[@title='" + date1 + "']")));
-        timeEndBox.click();
-        test.pass("✅ Đã nhập thời gian end");
-        
-        // Phương thức gửi thông tin
-        test.info("📝 Bước 10: Chọn phương thức gửi thông báo");
-        WebElement methodCTKMBox = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[contains(@class,'ant-select-selector')]")));
-        methodCTKMBox.click();
-        WebElement zaloPTGTT = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[contains(text(),'Zalo')]")));
-        zaloPTGTT.click();
-        test.pass("✅ Đã chọn phương thức gửi thông báo");
-    }
+        //✅ CLICK OPTION SAU KHI MỞ DROPDOWN
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[contains(@class,'ant-select-item-option-content') and contains(.,'Khuyến mãi sản phẩm chính')]")))
+                .click();
 
-    @Test(description = "Test chọn thuộc chiến dịch")
-    public void testChonThuocChienDich() throws InterruptedException {
-        testTaoCTKM();
-        
-        // Chọn thuộc chiến dịch
-        test.info("📝 Bước 11: Chọn thuộc chiến dịch");
-        
-        // Click vào dropdown để mở danh sách
-        WebElement campaignCTKMBox = wait.until(ExpectedConditions.elementToBeClickable(
-            By.id("promotiongeneralinfor_campaignId")));
-        campaignCTKMBox.click();
-        
-        // Đợi dropdown mở ra (đợi list options xuất hiện)
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-            By.xpath("//div[contains(@class,'ant-select-dropdown') and not(contains(@class,'ant-select-dropdown-hidden'))]")));
-        
-        // Gõ text để tìm kiếm
-        campaignCTKMBox.clear();
-        campaignCTKMBox.sendKeys("CD-1225-059");
-        
-        // Đợi option xuất hiện sau khi filter (đợi 1-2 giây để dropdown filter)
-        Thread.sleep(1500);
-        
-        // Click vào option - TÌM ĐÚNG OPTION TRONG DROPDOWN LIST (ant-select-item-option)
-        WebElement campaignOption = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[contains(@class,'ant-select-item-option') and contains(.,'CD-1225-059')]")));
-        campaignOption.click();
-        
-        test.pass("✅ Đã chọn thuộc chiến dịch: CD-1225-059");
-
-        // button tiếp theo
-        test.info("📝 Bước 12: Click button tiếp theo");
-        WebElement nextBtn = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//span[contains(text(),'Tiếp theo')]")));
-        nextBtn.click();
-        test.pass("✅ Đã click button tiếp theo");
-    }
+    
+            tc07.pass("Chọn khu vực hiển thị khuyến mãi OK");
+        }            
 }
+
+    //displayArea
+
 
 
 //thứ tự run test
