@@ -13,6 +13,11 @@ import org.testng.annotations.Test;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Duration;
+
 
 @Listeners(TestListener.class)
 public class PromotionCI extends BaseTest1 {
@@ -208,6 +213,23 @@ public class PromotionCI extends BaseTest1 {
                                 .click();
 
                 tc07.pass("Chọn khu vực hiển thị khuyến mãi OK");
+
+
+                 // UPLOAD ẢNH
+                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+                 // Luôn tìm input file (dù UI đã đổi)
+                 WebElement uploadInput = wait.until(
+                                 ExpectedConditions.presenceOfElementLocated(
+                                                 By.xpath("//input[@type='file']")));
+ 
+                 // Path ảnh trong project
+                 Path imagePath = Paths.get(
+                                 System.getProperty("user.dir"),
+                                 "src", "test", "resources", "images", "upload.jpg");
+ 
+                 // Upload
+                 uploadInput.sendKeys(imagePath.toAbsolutePath().toString());
 
                 ExtentTest tc08 = test.createNode("TC08 - Chi phí phòng ban");
 
