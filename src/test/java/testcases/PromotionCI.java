@@ -226,7 +226,7 @@ public class PromotionCI extends BaseTest1 {
                  // Path ảnh trong project
                  Path imagePath = Paths.get(
                                  System.getProperty("user.dir"),
-                                 "src", "test", "resources", "images", "upload.jpg");
+                                 "src", "test", "resources", "images", "upload.png");
  
                  // Upload
                  uploadInput.sendKeys(imagePath.toAbsolutePath().toString());
