@@ -56,3 +56,34 @@ secrets.properties
 # IDE files (bổ sung)
 .idea/
 *.iml
+
+         <!--
+         <suite name="Test Suite" verbose="1">
+           <listeners>
+               <listener class-name="org.testng.reporters.XMLReporter" />
+               <listener class-name="org.testng.reporters.EmailableReporter2" />
+           </listeners>
+
+           <testcases name="RunCallFlow">
+             <classes>
+               <class name="RsaEcomLcUAT"/>
+             </classes>
+           </testcases>
+         </suite>
+         -->
+//thứ tự run test
+//1. @BeforeSuite (setupReport)
+//   ↓
+//           2. @BeforeMethod (setup) → Mở browser, navigate
+//   ↓
+//           3. TestListener.onTestStart()
+//   ↓
+//           4. @Test (testLogin) → Chạy test
+//   ↓
+//           5. TestListener.onTestSuccess/Failure()
+//   ↓
+//           6. @AfterMethod (teardown) → Screenshot, đóng browser
+//   ↓
+//           7. @AfterSuite (flushReport) → Ghi report
+
+    //  dependsOnMethods = "testTaoCTKM"

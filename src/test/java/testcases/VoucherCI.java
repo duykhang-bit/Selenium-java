@@ -27,7 +27,7 @@ public class VoucherCI extends BaseTest1 {
         // FLOW - TẠO VOUCHER
         // =================================================
         @Test(priority = 1, description = "FLOW - Tạo Voucher CI")
-        public void testCreateVoucherFlow() {
+        public void testCreateVoucherFlowCI() {
 
                 /*
                  * =========================
@@ -82,7 +82,7 @@ public class VoucherCI extends BaseTest1 {
                                 By.xpath("//div[contains(@class,'actionHeader')]"))).click();
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss");
-                String voucherName = "AT_" + LocalDateTime.now().format(formatter);
+                String voucherName = "FamilyPackage topic update serial_" + LocalDateTime.now().format(formatter);
 
                 wait.until(ExpectedConditions.visibilityOfElementLocated(
                                 By.id("inputID"))).sendKeys(voucherName);
@@ -104,7 +104,7 @@ public class VoucherCI extends BaseTest1 {
                 wait.until(ExpectedConditions.elementToBeClickable(loaiCT)).click();
 
                 wait.until(ExpectedConditions.elementToBeClickable(
-                                By.xpath("//div[contains(@class,'ant-select-item-option-content') and normalize-space()='1-FLC']")))
+                                By.xpath("//div[contains(@class,'ant-select-item-option-content') and normalize-space()='7-FamilyPackage']")))
                                 .click();
 
                 tc04.pass("Chọn loại chương trình OK");

@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Listeners(TestListener.class)
-public class CreatePMHCI extends BaseTest1 {
+public class CreatePMHUAT extends BaseTest1 {
 
     @Override
     protected String getBaseUrl() {
-        return "https://ci-promotion.frt.vn/manager-promotion-list";
+        return "https://uat-promotion.frt.vn/manager-promotion-list";
     }
 
     @Test(priority = 1, description = "FLOW - Tạo Voucher CI")

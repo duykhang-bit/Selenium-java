@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="RSA Ecom CI Suite" verbose="1" parallel="false">
+<suite name="RSA Ecom CI Suite" verbose="1" parallel="none">
 
     <listeners>
         <listener class-name="listeners.TestListener"/>
@@ -11,44 +11,10 @@
         <classes>
             <class name="testcases.CreatePMHCI"/>
             <class name="testcases.VoucherCI"/>
+            <class name="testcases.VoucherUAT"/>
             <class name="testcases.PromotionCI"/>
+            <class name="testcases.PromotionUAT"/>
         </classes>
     </test>
 
 </suite>
-
-
-
-
-
-
-         <!--
-         <suite name="Test Suite" verbose="1">
-           <listeners>
-               <listener class-name="org.testng.reporters.XMLReporter" />
-               <listener class-name="org.testng.reporters.EmailableReporter2" />
-           </listeners>
-
-           <testcases name="RunCallFlow">
-             <classes>
-               <class name="RsaEcomLcUAT"/>
-             </classes>
-           </testcases>
-         </suite>
-         -->
-//thứ tự run test
-//1. @BeforeSuite (setupReport)
-//   ↓
-//           2. @BeforeMethod (setup) → Mở browser, navigate
-//   ↓
-//           3. TestListener.onTestStart()
-//   ↓
-//           4. @Test (testLogin) → Chạy test
-//   ↓
-//           5. TestListener.onTestSuccess/Failure()
-//   ↓
-//           6. @AfterMethod (teardown) → Screenshot, đóng browser
-//   ↓
-//           7. @AfterSuite (flushReport) → Ghi report
-
-    //  dependsOnMethods = "testTaoCTKM"

@@ -33,7 +33,7 @@ public class PromotionUAT extends BaseTest1 {
         // =================================================
         @Test(priority = 1, description = "FLOW 1 - CTKM SẢN PHẨM")
 
-        public void testCreatePromotionFlowNhomCTKMSanpham() {
+        public void testCreatePromotionFlowNhomCTKMSanphamUAT() {
 
                 /*
                  * =========================
@@ -225,7 +225,7 @@ public class PromotionUAT extends BaseTest1 {
                 // Path ảnh trong project
                 Path imagePath = Paths.get(
                                 System.getProperty("user.dir"),
-                                "src", "test", "resources", "images", "upload.jpg");
+                                "src", "test", "resources", "images", "upload.png");
 
                 // Upload
                 uploadInput.sendKeys(imagePath.toAbsolutePath().toString());

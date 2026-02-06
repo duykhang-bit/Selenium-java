@@ -27,7 +27,7 @@ public class VoucherUAT extends BaseTest1 {
         // FLOW - TẠO VOUCHER
         // =================================================
         @Test(priority = 1, description = "FLOW - Tạo Voucher CI")
-        public void testCreateVoucherFlow() {
+        public void testCreateVoucherFlowUAT() {
 
                 /*
                  * =========================
@@ -82,7 +82,7 @@ public class VoucherUAT extends BaseTest1 {
                                 By.xpath("//div[contains(@class,'actionHeader')]"))).click();
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss");
-                String voucherName = "AT_" + LocalDateTime.now().format(formatter);
+                String voucherName = "Automation Test_" + LocalDateTime.now().format(formatter);
 
                 wait.until(ExpectedConditions.visibilityOfElementLocated(
                                 By.id("inputID"))).sendKeys(voucherName);
@@ -109,28 +109,24 @@ public class VoucherUAT extends BaseTest1 {
 
                 tc04.pass("Chọn loại chương trình OK");
 
-
-
-
                 /// time
-                ///  // Lấy ngày hiện tại
+                /// // Lấy ngày hiện tại
                 String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                
+
                 ExtentTest tc11 = test.createNode("TC03 - Chọn thời gian & phương thức");
-                
+
                 // Click range picker
                 wait.until(ExpectedConditions.elementToBeClickable(
-                        By.xpath("//div[contains(@class,'ant-picker-range')]"))).click();
-                
+                                By.xpath("//div[contains(@class,'ant-picker-range')]"))).click();
+
                 // Click ngày bắt đầu
                 wait.until(ExpectedConditions.elementToBeClickable(
-                        By.xpath("//td[@title='" + today + "']"))).click();
-                
+                                By.xpath("//td[@title='" + today + "']"))).click();
+
                 // Click ngày kết thúc (cùng ngày)
                 wait.until(ExpectedConditions.elementToBeClickable(
-                        By.xpath("//td[@title='" + today + "']"))).click();
-                
-               
+                                By.xpath("//td[@title='" + today + "']"))).click();
+
                 tc11.pass("Chọn thời gian & phương thức OK");
 
                 /*
@@ -175,15 +171,14 @@ public class VoucherUAT extends BaseTest1 {
                 wait.until(ExpectedConditions.elementToBeClickable(optionGroupCode)).click();
 
                 // Tài khoản long châu
-               // Click vào box select
-wait.until(ExpectedConditions.elementToBeClickable(
-        By.xpath("//label[@title='Tài khoản long châu']/ancestor::div[contains(@class,'ant-form-item')]//div[contains(@class,'ant-select')]")
-    )).click();
+                // Click vào box select
+                wait.until(ExpectedConditions.elementToBeClickable(
+                                By.xpath("//label[@title='Tài khoản long châu']/ancestor::div[contains(@class,'ant-form-item')]//div[contains(@class,'ant-select')]")))
+                                .click();
 
-    wait.until(ExpectedConditions.elementToBeClickable(
-        By.xpath("//div[contains(@class,'ant-select-item-option') and @title='Chi phí bán hàng khác FS_FPT']")
-    )).click();
-    
+                wait.until(ExpectedConditions.elementToBeClickable(
+                                By.xpath("//div[contains(@class,'ant-select-item-option') and @title='Chi phí bán hàng khác FS_FPT']")))
+                                .click();
 
                 // Tài khoản FPT
                 WebElement TKFPT = wait.until(
